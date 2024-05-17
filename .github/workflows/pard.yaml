@@ -1,0 +1,16 @@
+name: Build PARD data
+
+on: push
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: make -j -C pard
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pard.sqlite
+          path: pard/pard.sqlite
+          if-no-files-found: error
