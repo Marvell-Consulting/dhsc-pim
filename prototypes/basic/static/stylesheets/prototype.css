@@ -1,0 +1,25 @@
+.search-button {
+    display: inline;
+}
+
+dl {
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+dt {
+    float: left;
+    width: 25%;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+}
+
+dd {
+    float: left;
+    width: 75%;
+    padding: 0;
+    margin: 0;
+}

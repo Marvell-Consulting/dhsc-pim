@@ -1,0 +1,43 @@
+{{> layout/header}}
+
+{{#back}}
+    <a href="{{back}}" class="govuk-back-link">Back</a>
+{{/back}}
+
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Search results</h1>
+
+        {{> partial/searchbox }}
+
+        {{# products }}
+            {{total}} RESULTS
+        {{/products}}
+
+        {{^ products }}
+            No results were found for '{{term}}'. Please try again.
+        {{/products}}
+
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+        <ul class="govuk-list">
+        {{# products }}
+          <li>
+            {{> partial/searchresult }}
+          </li>
+        {{/products}}
+        </ul>
+
+
+      </div>
+
+      <div class="govuk-grid-column-one-third">
+        <h2 class="govuk-heading-m">Filters</h2>
+        <p class="govuk-body">This is a paragraph inside a one-third wide column</p>
+      </div>
+    </div>
+  </main>
+
+{{> layout/footer}}

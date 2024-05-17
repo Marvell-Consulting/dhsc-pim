@@ -1,0 +1,33 @@
+{{> layout/header}}
+
+    <main class="govuk-main-wrapper">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <h1 class="govuk-heading-xl">Product Information Management (PIM)</h1>
+            </div>
+        </div>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <p class="govuk-body-l">
+                Use PIM to find information about a medical product such as:
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>classification codes, like NHS eClass, Risk class, or UDI-DI</li>
+                    <li>the manufacturer's details</li>
+                    <li>medical information, for example unit of issue, single use, sterile</li>
+                </ul>
+                </p>
+            </div>
+        </div>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <label class="govuk-label govuk-label--m" for="search">
+                    Search by product name, manufacturer, or the UDI-DI
+                </label>
+
+                {{> partial/searchbox }}
+            </div>
+        </div>
+    </main>
+
+{{> layout/footer}}
