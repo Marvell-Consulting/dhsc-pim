@@ -2,16 +2,21 @@
     display: inline;
 }
 
+.half-width dt,
+.half-width dd {
+    width: 49% !important;
+}
+
 dl {
     width: 100%;
     overflow: hidden;
-    padding: 0;
+    padding: 0.25em;
     margin: 0;
 }
 
 dt {
     float: left;
-    width: 25%;
+    width: 33%;
     padding: 0;
     margin: 0;
     font-weight: bold;
@@ -19,7 +24,7 @@ dt {
 
 dd {
     float: left;
-    width: 75%;
+    width: 66%;
     padding: 0;
     margin: 0;
 }

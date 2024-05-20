@@ -1,5 +1,6 @@
 import express, { Express, Request, Response } from "express";
 import basicAuth from "express-basic-auth";
+import Database from "better-sqlite3";
 
 import mustacheExpress from "mustache-express";
 import bodyParser from "body-parser";
@@ -9,6 +10,11 @@ import { Controllers } from "./controllers";
 
 const config = new Config();
 const app: Express = express();
+const db = new Database(config.database_file, { readonly: true });
+
+// Set the DB for the app so controllers can extract it with
+// `request.app.get("db")`
+app.set("db", db);
 
 // Configure templating for controllers
 app.set("views", `templates`);

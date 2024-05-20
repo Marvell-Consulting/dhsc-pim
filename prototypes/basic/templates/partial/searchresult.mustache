@@ -6,23 +6,49 @@
     <h3>{{name}}</h3>
 
     <dl>
+      <dt>
+          Manufacturer
+      </dt>
+      <dd>
+         {{ MAN_ORGANISATION_NAME }}
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+          Manufacturer Product Code (MPC)
+      </dt>
+      <dd>
+         -- which field?
+      </dd>
+    </dl>
+    <dl>
         <dt>
-          Identifier
+          UDI-DI
         </dt>
         <dd>
-          {{ identifier }}
+          {{ DEV_UDI_NUMBERS }}
         </dd>
     </dl>
     <dl>
       <dt>
-          Name
+        Risk class
       </dt>
       <dd>
-         {{ name }}
+            -- which field
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+          GMDN
+      </dt>
+      <dd>
+         <a class="govuk-link" href="">{{ GMDN_CODE }}</a> - {{GMDN_TERM_NAME}}
       </dd>
     </dl>
 
-    <a href="/product/{{identifier}}">Full product information</a>
+
+    <br/>
+    <a href="/product/{{DEVICE_ID}}">Full product information</a>
   </div>
 </div>
 

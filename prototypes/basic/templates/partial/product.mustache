@@ -1,0 +1,109 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h2>{{DEVICE_TYPE_NAME}}</h2>
+
+    <h3>Product classification</h3>
+
+    <dl class="half-width">
+      <dt>
+          UDI-DI
+      </dt>
+      <dd>
+        {{ DEV_UDI_NUMBERS }}
+      </dd>
+    </dl>
+
+    <dl class="half-width">
+        <dt>
+        GMDN Code & Term
+        </dt>
+        <dd>
+            {{# GMDN_CODE }}
+                <a class="govuk-link" href="">{{ . }}</a>
+            {{ /GMDN_CODE}}
+            {{# GMDN_TERM_NAME }} - {{.}} {{/GMDN_TERM_NAME}}
+        </dd>
+    </dl>
+
+    <dl class="half-width">
+    <dt>
+        Name
+    </dt>
+    <dd>
+        {{ DEVICE_TYPE_NAME }}
+    </dd>
+    </dl>
+
+    <dl class="half-width">
+    <dt>
+        Manufacturer
+    </dt>
+    <dd>
+        {{ MAN_ORGANISATION_NAME }}
+    </dd>
+    </dl>
+
+    <dl class="half-width">
+      <dt>
+          Risk class
+      </dt>
+      <dd>
+        {{# DEVICE_RISK_SUB_TYPE_CODE }} {{.}} {{/DEVICE_RISK_SUB_TYPE_CODE}}
+        {{# DEVICE_RISK_SUB_TYPE_DESC }} - {{.}} {{/ DEVICE_RISK_SUB_TYPE_DESC }}
+      </dd>
+    </dl>
+
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+    <h3>Medical information</h3>
+
+    <dl class="half-width">
+      <dt>
+          Unit of issue
+      </dt>
+      <dd>
+        - which field?
+      </dd>
+    </dl>
+
+    <dl class="half-width">
+      <dt>
+        Single use
+      </dt>
+      <dd>
+        - which field?
+      </dd>
+    </dl>
+
+    <dl class="half-width">
+      <dt>
+          Sterile
+      </dt>
+      <dd>
+        {{^IS_STERILE}}No data{{/IS_STERILE}}
+        {{ IS_STERILE }}
+      </dd>
+    </dl>
+
+    <dl class="half-width">
+      <dt>
+          Implantable
+      </dt>
+      <dd>
+        - which field?
+      </dd>
+    </dl>
+
+    <dl class="half-width">
+      <dt>
+          Latex
+      </dt>
+      <dd>
+         - which field?
+      </dd>
+    </dl>
+
+
+  </div>
+</div>

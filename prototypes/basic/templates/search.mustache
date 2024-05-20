@@ -11,16 +11,15 @@
 
         {{> partial/searchbox }}
 
-        {{# products }}
-            {{total}} RESULTS
-        {{/products}}
+        {{# rangeText }}
+            From {{rangeText}} of {{total}} RESULTS
+        {{/rangeText}}
 
         {{^ products }}
             No results were found for '{{term}}'. Please try again.
         {{/products}}
 
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-
 
         <ul class="govuk-list">
         {{# products }}
