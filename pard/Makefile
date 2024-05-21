@@ -2,7 +2,7 @@
 all: pard.sqlite
 
 pard.sqlite: ../schema.sql devices.json manufacturers.json
-	cat $< insert_devices.sql insert_manufacturers.sql | sqlite3 $@
+	cat $< insert_manufacturers.sql insert_devices.sql update_search.sql | sqlite3 $@
 
 JSON_FLAGS := -H 'Accept: application/json' -H 'Content-Type: application/json' -X POST
 
