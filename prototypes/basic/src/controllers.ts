@@ -23,9 +23,7 @@ export module Controllers {
 
     let countQuery = `SELECT COUNT(*) as total FROM devices`;
     let total = db.prepare(countQuery).get().total;
-
     let rangeText = `${offset + 1} - ${offset + rows.length}`;
-    console.log(rangeText);
 
     response.render("search", {
       term: request.query["search"] || "",

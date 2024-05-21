@@ -109,3 +109,39 @@ export class Product {
   IS_CRITICAL_WARNING: string = "";
   CRITICAL_WARNING_DESCRIPTION: string = "";
 }
+
+export class PARDProduct {
+  DEVICE_ID: string = "";
+  MAN_ORGANISATION_ID: string = "";
+  GMDN_ID: string = "";
+  GMDN_CODE: string = "";
+  GMDN_TERM_NAME: string = "";
+  DEVICE_TYPE_CODE: string = "";
+  DEVICE_TYPE_NAME: string = "";
+  DEV_NOTIFIED_BODY_ID: string = "";
+  NOTIFIED_BODY_NAME: string = "";
+  DEVICE_RISK_CLASSIFICATION_ID: string = "";
+  DEVICE_RISK_SUB_TYPE_CODE: string = "";
+  DEVICE_RISK_SUB_TYPE_DESC: string = "";
+  DEVICE_RISK_IS_ACTIVE: string = "";
+  DEVICE_REG_STATUS_CODE: string = "";
+  REG_DEV_STATUS: string = "";
+  IS_REGISTRED_UNDER_2017_MDRS: string = "";
+  IS_STERILE: string = "";
+  METHOD_STERILISATION: string = "";
+  OTHER_STERILISATION: string = "";
+  IS_MEASURING: string = "";
+  SCHEDULEXVI: string = "";
+  SINGLE_USE_DEVICE: string = "";
+  DEV_UDI_NUMBERS: string = "";
+  DEV_UDI_ENTITY_ID: string = "";
+  DEV_UDI_ENTITY_CODE: string = "";
+  DEVICE_IMPLANTABLE: string = "";
+  DEVICE_ACTIVE: string = "";
+  ADMINISTER_REMOVE_MEDICINAL_PRODUCT: string = "";
+  IS_REUSABLE_SURGICAL_INSTRUMENTS: string = "";
+  IS_CUSTOM_MADE: string = "";
+  IS_PERFORMANCE_STUDIES: string = "";
+  MAXIMUM_NUMBER_REUSE: string = "";
+  MAN_ORGANISATION_NAME: string = "";
+}
