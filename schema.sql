@@ -7,7 +7,7 @@ CREATE TABLE organisations (
        MAN_ORGANISATION_NAME string,
        MAN_ADDR_LINE_1 string,
        MAN_ADDR_LINE_2 string,
-       MAN_ADDR_LINE_3 string,  
+       MAN_ADDR_LINE_3 string,
        MAN_ADDR_LINE_4 string,
        MAN_CITY string,
        MAN_STATE string,
@@ -24,7 +24,7 @@ CREATE TABLE organisations (
        REP_NAME string,
        REP_ADDRESS_LINE_1 string,
        REP_ADDRESS_LINE_2 string,
-       REP_ADDRESS_LINE_3 string,  
+       REP_ADDRESS_LINE_3 string,
        REP_ADDRESS_LINE_4 string,
        REP_CITY string,
        REP_STATE string,
@@ -132,3 +132,5 @@ CREATE TABLE products (
 
 );
 CREATE INDEX products_deviceID on products('Device ID');
+
+CREATE VIRTUAL TABLE search USING fts5(DEVICE_ID, PRODUCT, MANUFACTURER, UDI);
