@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { Config } from "./config";
-import { Product } from "./models";
 
 export module Controllers {
   const config = new Config();
