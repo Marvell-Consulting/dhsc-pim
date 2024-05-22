@@ -32,14 +32,16 @@ export module Controllers {
         "select count(device_id) as total from search where search match ?";
       let idResults = db.prepare(query).all(term, limit, offset);
 
-      let ids: number[] = idResults.map((d: any) => {
-        return d.DEVICE_ID;
-      });
-      query = getByIds(ids);
-      console.log(query);
+      if (idResults.length > 0) {
+        let ids: number[] = idResults.map((d: any) => {
+          return d.DEVICE_ID;
+        });
+        query = getByIds(ids);
+        console.log(query);
 
-      products = db.prepare(query).all();
-      total = db.prepare(countQuery).get(term).total;
+        products = db.prepare(query).all();
+        total = db.prepare(countQuery).get(term).total;
+      }
     }
 
     if (products.length > 0) {
