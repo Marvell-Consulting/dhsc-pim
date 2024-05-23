@@ -1,4 +1,4 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express } from "express";
 import basicAuth from "express-basic-auth";
 import Database from "better-sqlite3";
 

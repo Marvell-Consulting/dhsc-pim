@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { Config } from "./config";
+//import { Config } from "./config";
 import { PARDProduct } from "./models";
 
 export module Controllers {
-  const config = new Config();
+  // const config = new Config();
 
   export function home(_request: Request, response: Response) {
     response.render("home");
