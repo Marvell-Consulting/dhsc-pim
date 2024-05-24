@@ -1,6 +1,9 @@
 import { Request, Response } from "express";
 //import { Config } from "./config";
 import { PARDProduct } from "./models";
+import { pagination } from "./pagination";
+
+const PAGE_SIZE: number = 10;
 
 export module Controllers {
   // const config = new Config();
@@ -12,7 +15,7 @@ export module Controllers {
   export function search(request: Request, response: Response) {
     let term: string = request.query.search?.toString() || "";
     let page = parseInt(request.query.page?.toString() || "1");
-    let limit = 10;
+    let limit = PAGE_SIZE;
     let offset = (page - 1) * limit;
 
     let db = request.app.get("db");
@@ -47,6 +50,29 @@ export module Controllers {
       rangeText = `${offset + 1} - ${offset + products.length}`;
     }
 
+    let fullURL = `${request.protocol}://${request.get("host")}${request.originalUrl}`;
+
+    let total_pages = Math.floor(total / PAGE_SIZE) + 1;
+    let pages = pagination(fullURL, page, total_pages);
+
+    let has_previous_page: string = "";
+    let has_next_page: string = "";
+    if (total_pages > 1) {
+      if (page != 1) {
+        let pageURL = new URL(fullURL);
+        pageURL.searchParams.delete("page");
+        pageURL.searchParams.set("page", (page - 1).toString());
+        has_previous_page = pageURL.toString();
+      }
+
+      if (page != total_pages) {
+        let pageURL = new URL(fullURL);
+        pageURL.searchParams.delete("page");
+        pageURL.searchParams.set("page", (total_pages + 1).toString());
+        has_next_page = pageURL.toString();
+      }
+    }
+
     response.render("search", {
       term: request.query["search"] || "",
       back: request.get("Referrer"),
@@ -54,6 +80,9 @@ export module Controllers {
       page: offset,
       rangeText: rangeText,
       products: products,
+      has_previous_page: has_previous_page,
+      has_next_page: has_next_page,
+      pages: pages,
     });
   }
 
