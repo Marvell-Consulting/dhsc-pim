@@ -1,4 +1,4 @@
-<h1>{{DEVICE_TYPE_NAME}}</h1>
+<h1>{{BRAND_TRADE_NAME}}</h1>
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
@@ -8,7 +8,7 @@
   <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__header">UDI-DI</th>
-      <td class="govuk-table__cell">{{ DEV_UDI_NUMBERS }}</td>
+      <td class="govuk-table__cell">{{ UDI_NUMBER }}</td>
     </tr>
 
     <tr class="govuk-table__row">
@@ -23,12 +23,12 @@
 
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__header">Name</th>
-      <td class="govuk-table__cell">{{ DEVICE_TYPE_NAME }}</td>
+      <td class="govuk-table__cell">{{ BRAND_TRADE_NAME }}</td>
     </tr>
 
         <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__header">Manufacturer</th>
-      <td class="govuk-table__cell">{{ MAN_ORGANISATION_NAME }}</td>
+      <td class="govuk-table__cell">{{ MANUFACTURER_NAME }}</td>
     </tr>
 
         <tr class="govuk-table__row">
@@ -49,7 +49,7 @@
       Unit of issue
       </th>
       <td class="govuk-table__cell">
-        -- Which field?
+        {{ UNIT_OF_USE_UDI_DI }}
       </td>
     </tr>
 
@@ -58,7 +58,7 @@
         Single use
       </th>
       <td class="govuk-table__cell">
-        -- which field?
+        {{ SINGLE_USE_DEVICE }}
       </td>
     </tr>
 
@@ -67,7 +67,6 @@
         Sterile
       </th>
       <td class="govuk-table__cell">
-        {{^IS_STERILE}}No data{{/IS_STERILE}}
         {{ IS_STERILE }}
       </td>
     </tr>
@@ -77,7 +76,7 @@
         Implantable
       </th>
       <td class="govuk-table__cell">
-        -- which field?
+        {{ DEVICE_IMPLANTABLE }}
       </td>
     </tr>
 
@@ -86,7 +85,7 @@
         Latex
       </th>
       <td class="govuk-table__cell">
-        -- which field?
+        {{ IS_CONTAINING_LATEX }}
       </td>
     </tr>
 

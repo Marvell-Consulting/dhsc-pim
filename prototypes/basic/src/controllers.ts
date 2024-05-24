@@ -27,17 +27,16 @@ export module Controllers {
       total = db.prepare(countQuery).get().total;
     } else {
       let query =
-        "select rank, device_id from search where search match ? order by rank LIMIT ? OFFSET ?;";
+        "select rank, PRODUCT_ID from search where search match ? order by rank LIMIT ? OFFSET ?;";
       let countQuery =
-        "select count(device_id) as total from search where search match ?";
+        "select count(PRODUCT_ID) as total from search where search match ?";
       let idResults = db.prepare(query).all(term, limit, offset);
 
       if (idResults.length > 0) {
         let ids: number[] = idResults.map((d: any) => {
-          return d.DEVICE_ID;
+          return d.PRODUCT_ID;
         });
         query = getByIds(ids);
-        console.log(query);
 
         products = db.prepare(query).all();
         total = db.prepare(countQuery).get(term).total;
@@ -60,34 +59,34 @@ export module Controllers {
 
   function browseQuery(): [string, string] {
     return [
-      `SELECT D.*, O.MAN_ORGANISATION_NAME FROM devices AS D
-     JOIN organisations O on D.MAN_ORGANISATION_ID=O.MAN_ORGANISATION_ID
-     ORDER BY D.DEVICE_TYPE_NAME
-     LIMIT ?
-     OFFSET ?`,
-      `SELECT COUNT(*) as total FROM devices`,
+      `SELECT P.*, D.* FROM products AS P INNER JOIN devices as D ON D.DEVICE_ID=P.DEVICE_ID  ORDER BY P.BRAND_TRADE_NAME
+     LIMIT ? OFFSET ?`,
+      `SELECT COUNT(*) as total FROM products`,
     ];
   }
 
   function getByIds(ids: number[]): string {
     var inExpression = ids.join(",");
 
-    return `SELECT D.*, O.MAN_ORGANISATION_NAME FROM devices AS D
-     JOIN organisations O on D.MAN_ORGANISATION_ID=O.MAN_ORGANISATION_ID
-     WHERE D.DEVICE_ID IN (${inExpression})`;
+    return `SELECT P.*,D.* FROM products as P INNER JOIN devices as D ON D.DEVICE_ID=P.DEVICE_ID WHERE PRODUCT_ID IN (${inExpression})`;
   }
 
   export function detail(request: Request, response: Response) {
-    let query = `SELECT D.*, O.MAN_ORGANISATION_NAME FROM devices AS D
-     JOIN organisations O on D.MAN_ORGANISATION_ID=O.MAN_ORGANISATION_ID
-     WHERE D.DEVICE_ID = ?`;
+    let query = `SELECT P.*, D.* FROM products AS P INNER JOIN devices as D ON D.DEVICE_ID=P.DEVICE_ID WHERE PRODUCT_ID = ?`;
 
     let db = request.app.get("db");
     let product = db.prepare(query).get(request.params.id);
 
     let manufacturer = db
       .prepare(`select * from organisations where MAN_ORGANISATION_ID=?`)
-      .get(product.MAN_ORGANISATION_ID);
+      .get(product.MANUFACTURER_ID);
+
+    // Cleanup product
+    product.UNIT_OF_USE_UDI_DI = clean_boolean(product.UNIT_OF_USE_UDI_DI);
+    product.SINGLE_USE_DEVICE = clean_boolean(product.SINGLE_USE_DEVICE);
+    product.IS_STERILE = clean_boolean(product.IS_STERILE);
+    product.DEVICE_IMPLANTABLE = clean_boolean(product.DEVICE_IMPLANTABLE);
+    product.IS_CONTAINING_LATEX = clean_boolean(product.IS_CONTAINING_LATEX);
 
     response.render("detail", {
       back: request.get("Referrer"),
@@ -95,4 +94,20 @@ export module Controllers {
       manufacturer: manufacturer,
     });
   }
+}
+
+function clean_boolean(val?: string | undefined): string {
+  if (val === null || val === undefined || val == "" || val == "NULL") {
+    return "Not specified";
+  }
+
+  if (val === "0") {
+    return "No";
+  } else if (val === "1") {
+    return "Yes";
+  } else if (val.toLowerCase() === "na") {
+    return "Not applicable";
+  }
+
+  return val;
 }

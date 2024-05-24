@@ -12,11 +12,11 @@
         {{> partial/searchbox }}
 
         {{# rangeText }}
-            From {{rangeText}} of {{total}} RESULTS
+            From {{rangeText}} of {{total}} results {{# term }} for '{{.}}'. {{/term}}
         {{/rangeText}}
 
         {{^ products }}
-            No results were found for '{{term}}'. Please try again.
+            No results were found for '{{term}}'.
         {{/products}}
 
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
