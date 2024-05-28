@@ -8,6 +8,11 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
 
+        {{# debug }}
+            {{> partial/debug }}
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        {{/ debug }}
+
         {{^product }}
             Product not found
         {{/ product}}
