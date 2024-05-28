@@ -68,7 +68,7 @@ export module Controllers {
       if (page != total_pages) {
         let pageURL = new URL(fullURL);
         pageURL.searchParams.delete("page");
-        pageURL.searchParams.set("page", (total_pages + 1).toString());
+        pageURL.searchParams.set("page", (page + 1).toString());
         has_next_page = pageURL.toString();
       }
     }
