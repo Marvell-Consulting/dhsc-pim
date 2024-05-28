@@ -8,8 +8,32 @@ const PAGE_SIZE: number = 10;
 export module Controllers {
   // const config = new Config();
 
+  export function index(_request: Request, response: Response) {
+    response.render("index");
+  }
+
   export function home(_request: Request, response: Response) {
     response.render("home");
+  }
+
+  export function wound(_request: Request, response: Response) {
+    response.render("wound");
+  }
+
+  export function paq(_request: Request, response: Response) {
+    response.render("paq");
+  }
+
+  export function paq2(_request: Request, response: Response) {
+    response.render("paq2");
+  }
+
+  export function multiple(_request: Request, response: Response) {
+    response.render("multiple");
+  }
+
+  export function multipleresults(_request: Request, response: Response) {
+    response.render("multipleresults");
   }
 
   export function search(request: Request, response: Response) {
