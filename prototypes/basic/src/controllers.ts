@@ -117,6 +117,11 @@ export module Controllers {
     product.DEVICE_IMPLANTABLE = clean_boolean(product.DEVICE_IMPLANTABLE);
     product.IS_CONTAINING_LATEX = clean_boolean(product.IS_CONTAINING_LATEX);
 
+    // Fudge to make the product code available in the manufacturer template
+    if (manufacturer) {
+      manufacturer.PRODUCT_CODE = product.PRODUCT_CODE;
+    }
+
     response.render("detail", {
       back: request.get("Referrer"),
       product: product,
