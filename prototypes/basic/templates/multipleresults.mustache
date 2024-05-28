@@ -1,0 +1,418 @@
+{{> layout/header}}
+
+{{#back}}
+    <a href="{{back}}" class="govuk-back-link">Back</a>
+{{/back}}
+
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Multiple device search results</h1>
+
+        <h3 class="govuk-heading-s">Showing results for:</h3>
+        <p class="govuk-body">12345,12346,12347,12348,12349</p>
+
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+        <h3 class="govuk-heading-s">5 results</h3>
+        <ul class="govuk-list">
+        {{# products }}
+          <li>
+            {{> partial/searchresult }}
+          </li>
+        {{/products}}
+        </ul>
+  {{data["multipleDevices"]}}
+      </div>
+
+      <div class="govuk-grid-column-one-third">
+        <h2 class="govuk-heading-m">Filter results</h2>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Device production
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                {{! <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  <h1 class="govuk-fieldset__heading">
+                    Filter by:
+                  </h1>
+                </legend> }}
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Device no longer in production
+                    </label>
+                  </div>
+                </div>
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filters" name="filters" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filters">
+                      ‘Custom-made’ Medical Device
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+        </details>
+        
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Device production
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                {{! <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  <h1 class="govuk-fieldset__heading">
+                    Filter by:
+                  </h1>
+                </legend> }}
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Device no longer in production
+                    </label>
+                  </div>
+                </div>
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filters" name="filters" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filters">
+                      ‘Custom-made’ Medical Device
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+        </details>
+
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Quality assurance
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                {{! <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  <h1 class="govuk-fieldset__heading">
+                    Filter by:
+                  </h1>
+                </legend> }}
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      CE-marked for all EC directives
+                    </label>
+                  </div>
+                </div>
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Medical devices directive classification
+                    </label>
+                    {{! ADD SUB OPTIONS }}
+                  </div>
+                </div>
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Active implantable devices directive
+                    </label>
+                  </div>
+                </div>
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      In-Vitro Diagnostics Medical Device Directive Category
+                    </label>
+                    {{! ADD SUB OPTIONS }}
+                  </div>
+                </div>
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Other EC directive
+                    </label>
+                  </div>
+                </div>
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Notified Body conformity assessment
+                    </label>
+                  </div>
+                </div>
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Certified to management quality system standards
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+        </details>
+
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Device usage
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                {{! <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  <h1 class="govuk-fieldset__heading">
+                    filter
+                  </h1>
+                </legend> }}
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filters" name="filters" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filters">
+                      For 'Clinical investigation'
+                    </label>
+                  </div>
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filters" name="filters" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filters">
+                      In-Vitro Diagnostic Medical Device for ‘Performance Evaluation’
+                    </label>
+                  </div>
+                
+              </fieldset>
+            </div>
+          </div>
+        </details>
+
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Support and servicing
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                {{! <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  <h1 class="govuk-fieldset__heading">
+                    filter
+                  </h1>
+                </legend> }}
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Guaranteed date of support
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Support includes availability of parts and supply of consumables / accessories
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Suppport includes training, maintenance, repair, etc.
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Device warranty period
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Working lifetime
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Notification of device alerts/upgrates
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Identical loan equipment available
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Installation / ancillary service requirements
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Disposable, non-serviceable device
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Maintainence / repair and technical support provided
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Serviceing staff verifiably trained and competency assessed
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Qualification / competency records available on request
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Servicing organisation currently certified to any management system Standards
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Contract alternatives offered include an option for in-house equipment servicing?
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+        </details>
+
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Health and safety
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                {{! <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  <h1 class="govuk-fieldset__heading">
+                    Organisation
+                  </h1>
+                </legend> }}
+                <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Level of required device decontamination
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Instructions meet the requirements of EN-ISO-17664?
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Requires processing / reprocessing before / between uses?
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Limited device reprocessing cycles
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Device is uniquely identifiable
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Single-use
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Implantable
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Stores or transmits patient information
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Connects to IT or network services
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Requires safety management measures
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="filter" name="filter" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter">
+                      Requires performance qualtity assurance measures
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+        </details>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        {{> partial/download}}
+
+      </div>
+    </div>
+  </main>
+
+{{> layout/footer}}
