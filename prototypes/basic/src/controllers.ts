@@ -124,10 +124,16 @@ export module Controllers {
       manufacturer.PRODUCT_CODE = product.PRODUCT_CODE;
     }
 
+    let debug = request.query.debug || "";
+    if (debug) {
+      debug = product;
+    }
+
     response.render("detail", {
       back: request.get("Referrer"),
       product: product,
       manufacturer: manufacturer,
+      debug: debug,
     });
   }
 }
