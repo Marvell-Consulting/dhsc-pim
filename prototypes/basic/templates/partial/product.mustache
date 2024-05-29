@@ -8,20 +8,24 @@
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">UDI-DI</th>
-          <td class="govuk-table__cell">{{ UDI_NUMBER }}</td>
+          <td class="govuk-table__cell">
+            {{^ UDI_NUMBER }}  <span class="govuk-hint">Data not available</span> {{/ UDI_NUMBER}}
+            {{# UDI_NUMBER }} {{ . }} {{/UDI_NUMBER}}  
+          </td>
         </tr>
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">GMDN code</th>
           <td class="govuk-table__cell">
-            {{# GMDN_CODE }}
-            <a class="govuk-link" href="">{{ . }}</a>
-            {{ /GMDN_CODE}}
-            {{# GMDN_TERM_NAME }} - {{.}} {{/GMDN_TERM_NAME}}
+            {{^ GMDN_CODE }}  <span class="govuk-hint">Data not available</span> {{/ GMDN_CODE}}
+            {{# GMDN_CODE }} {{ . }} - {{GMDN_TERM_NAME}} {{/GMDN_CODE}} 
           </td>
         </tr>
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Make</th>
-          <td class="govuk-table__cell">{{ DEVICE_TYPE_CODE }}</td>
+          <th scope="row" class="govuk-table__header">Product Code (MPC)</th>
+          <td class="govuk-table__cell">
+            {{^ PRODUCT_CODE }}  <span class="govuk-hint">Data not available</span> {{/ PRODUCT_CODE}}
+            {{# PRODUCT_CODE }} {{ . }} {{/PRODUCT_CODE}}  
+          </td>
         </tr>
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Model</th>
@@ -29,11 +33,17 @@
         </tr>
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Manufacturer</th>
-          <td class="govuk-table__cell">{{ DEVICE_TYPE_NAME }}</td>
+          <td class="govuk-table__cell">
+            {{^ MANUFACTURER_NAME }}  <span class="govuk-hint">Data not available</span> {{/ MANUFACTURER_NAME}}
+            {{# MANUFACTURER_NAME }} {{ . }} {{/MANUFACTURER_NAME}}
+          </td>
         </tr>
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Supplier</th>
-          <td class="govuk-table__cell">{{ REP_NAME }}</td>
+          <td class="govuk-table__cell">
+            {{^ REP_NAME }}  <span class="govuk-hint">Data not available</span> {{/ REP_NAME}}
+            {{# REP_NAME }} {{ . }} {{/REP_NAME}}  
+          </td>
         </tr>
       </tbody>
     </table>
@@ -153,11 +163,17 @@
               </tr>
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">In-Vitro Diagnostic Medical Device for ‘Performance Evaluation’</th>
-                <td class="govuk-table__cell">{{ IS_PERFORMANCE_STUDIES }}</td>
+                <td class="govuk-table__cell">
+                  {{^ IS_PERFORMANCE_STUDIES }}  <span class="govuk-hint">Data not available</span> {{/ IS_PERFORMANCE_STUDIES}}
+                  {{# IS_PERFORMANCE_STUDIES }} {{ . }} {{/IS_PERFORMANCE_STUDIES}}  
+                </td>
               </tr>
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">Custom made</th>
-                <td class="govuk-table__cell">{{ IS_CUSTOM_MADE }}</td>
+                <td class="govuk-table__cell">
+                  {{^ IS_CUSTOM_MADE }}  <span class="govuk-hint">Data not available</span> {{/ IS_CUSTOM_MADE}}
+                  {{# IS_CUSTOM_MADE }} {{ . }} {{/IS_CUSTOM_MADE}}  
+                </td>
               </tr>
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">Prescribing medical practitioner</th>
@@ -289,18 +305,25 @@
               </tr>
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">Single use</th>
-                <td class="govuk-table__cell">{{ SINGLE_USE_DEVICE }}</td>
+                <td class="govuk-table__cell">
+                  {{^ SINGLE_USE_DEVICE }}  <span class="govuk-hint">Data not available</span> {{/ SINGLE_USE_DEVICE}}
+                  {{# SINGLE_USE_DEVICE }} {{ . }} {{/SINGLE_USE_DEVICE}}  
+                </td>
               </tr>
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">Implantable</th>
-                <td class="govuk-table__cell">{{ DEVICE_IMPLANTABLE }}</td>
+                <td class="govuk-table__cell">
+                  {{^ DEVICE_IMPLANTABLE }}  <span class="govuk-hint">Data not available</span> {{/ DEVICE_IMPLANTABLE}}
+                  {{# DEVICE_IMPLANTABLE }} {{ . }} {{/DEVICE_IMPLANTABLE}}  
+                </td>
               </tr>
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">
                 Unit of issue
                 </th>
                 <td class="govuk-table__cell">
-                  {{ UNIT_OF_USE_UDI_DI }}
+                  {{^ UNIT_OF_USE_UDI_DI }}  <span class="govuk-hint">Data not available</span> {{/ UNIT_OF_USE_UDI_DI}}
+                  {{# UNIT_OF_USE_UDI_DI }} {{ . }} {{/UNIT_OF_USE_UDI_DI}}
                 </td>
               </tr>
 
@@ -309,7 +332,8 @@
                   Sterile
                 </th>
                 <td class="govuk-table__cell">
-                  {{ IS_STERILE }}
+                  {{^ IS_STERILE }}  <span class="govuk-hint">Data not available</span> {{/ IS_STERILE}}
+                  {{# IS_STERILE }} {{ . }} {{/IS_STERILE}}
                 </td>
               </tr>
 
@@ -318,7 +342,8 @@
                   Contains latex
                 </th>
                 <td class="govuk-table__cell">
-                  {{ IS_CONTAINING_LATEX }}
+                  {{^ IS_CONTAINING_LATEX }}  <span class="govuk-hint">Data not available</span> {{/ IS_CONTAINING_LATEX}}
+                  {{# IS_CONTAINING_LATEX }} {{ . }} {{/IS_CONTAINING_LATEX}}
                 </td>
               </tr>
               <tr class="govuk-table__row">
