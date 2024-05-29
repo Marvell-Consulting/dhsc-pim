@@ -4,15 +4,6 @@
     <a href="{{back}}" class="govuk-back-link">Back</a>
 {{/back}}
 
-<style>
-  .filter-container{
-    position: relative;
-    height: 200px;
-    overflow-y: scroll !important;
-    overflow-x: hidden;
-    background-color: #fff;
-  }
-</style>
 
   <main class="govuk-main-wrapper">
     <div class="govuk-grid-row">
@@ -20,6 +11,11 @@
         <h1 class="govuk-heading-xl">Search results</h1>
 
         {{> partial/searchbox }}
+
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
 
         {{# rangeText }}
             <h3 class="govuk-heading-s">{{total}} results</h3>
@@ -44,7 +40,7 @@
       </div>
 
       <div class="govuk-grid-column-one-third filters">
-        <h2 class="govuk-heading-m">Filter results</h2>
+        <h2 class="govuk-heading-s">Filter results</h2>
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
         
         <details class="govuk-details">

@@ -49,7 +49,7 @@ a:hover {
 
 .filter-container {
     padding: 5px 10px;
-    /* border: 1px solid #111111; */
+    border: 1px solid #b1b4b6;
     height: 250px;
     overflow: scroll;
     overflow-y: scroll;
