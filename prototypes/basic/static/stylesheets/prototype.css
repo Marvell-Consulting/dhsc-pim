@@ -16,3 +16,34 @@ dd {
     margin: 0;
     grid-column-start: 2;
 }
+
+.govuk-header.mhra-header {
+    background-color: gray;
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    padding: 20px 0 40px 0;
+    border-bottom: none;
+    
+}
+
+.govuk-header__container {
+    border-bottom: none;
+}
+
+a {
+    color: #1d70b8;
+}
+
+a:hover {
+    color: #003078;
+}
+
+.filter-container {
+    padding: 5px 10px;
+    border: 1px solid #111111;
+    height: 250px;
+    overflow: scroll;
+    overflow-y: scroll;
+}
+  
