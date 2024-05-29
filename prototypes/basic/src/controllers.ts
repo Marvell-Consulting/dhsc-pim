@@ -53,11 +53,13 @@ export module Controllers {
       products = db.prepare(query).all(limit, offset);
       total = db.prepare(countQuery).get().total;
     } else {
+      let qterm = removePunctuation(term);
+
       let query =
         "select rank, PRODUCT_ID from search where search match ? order by rank LIMIT ? OFFSET ?;";
       let countQuery =
         "select count(PRODUCT_ID) as total from search where search match ?";
-      let idResults = db.prepare(query).all(term, limit, offset);
+      let idResults = db.prepare(query).all(qterm, limit, offset);
 
       if (idResults.length > 0) {
         let ids: number[] = idResults.map((d: any) => {
@@ -66,7 +68,7 @@ export module Controllers {
         query = getByIds(ids);
 
         products = db.prepare(query).all();
-        total = db.prepare(countQuery).get(term).total;
+        total = db.prepare(countQuery).get(qterm).total;
       }
     }
 
@@ -92,7 +94,7 @@ export module Controllers {
       if (page != total_pages) {
         let pageURL = new URL(fullURL);
         pageURL.searchParams.delete("page");
-        pageURL.searchParams.set("page", (total_pages + 1).toString());
+        pageURL.searchParams.set("page", (page + 1).toString());
         has_next_page = pageURL.toString();
       }
     }
@@ -141,10 +143,21 @@ export module Controllers {
     product.DEVICE_IMPLANTABLE = clean_boolean(product.DEVICE_IMPLANTABLE);
     product.IS_CONTAINING_LATEX = clean_boolean(product.IS_CONTAINING_LATEX);
 
+    // Fudge to make the product code available in the manufacturer template
+    if (manufacturer) {
+      manufacturer.PRODUCT_CODE = product.PRODUCT_CODE;
+    }
+
+    let debug = request.query.debug || "";
+    if (debug) {
+      debug = product;
+    }
+
     response.render("detail", {
       back: request.get("Referrer"),
       product: product,
       manufacturer: manufacturer,
+      debug: debug,
     });
   }
 }
@@ -163,4 +176,8 @@ function clean_boolean(val?: string | undefined): string {
   }
 
   return val;
+}
+
+function removePunctuation(text: string): string {
+  return text.replace(/[^\w\s]|_/g, "");
 }
