@@ -9,7 +9,7 @@ dl {
 }
 
 dt {
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 
 dd {
@@ -39,11 +39,23 @@ a:hover {
     color: #003078;
 }
 
+.search-bar {
+    padding-left: 35px;
+    background: url("https://img.icons8.com/search") no-repeat left;
+    background-position-x: 10px;
+    background-size: 20px;
+    margin-bottom: 5px;
+}
+
 .filter-container {
     padding: 5px 10px;
-    border: 1px solid #111111;
+    /* border: 1px solid #111111; */
     height: 250px;
     overflow: scroll;
     overflow-y: scroll;
 }
   
+.filters .govuk-details__text {
+    border-left:none;
+    padding-left: 0;
+}
