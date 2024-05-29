@@ -12,7 +12,7 @@ WORKDIR /app
 # Set production environment
 ENV NODE_ENV="production"
 ENV HOST=0.0.0.0
-ENV DATABASE=/data/mhra.sqlite
+ENV DATABASE=/data/mhra-db.sqlite
 
 # Throw-away build stage to reduce size of final image
 FROM base as build
