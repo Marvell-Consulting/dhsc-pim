@@ -114,7 +114,7 @@ export module Controllers {
 
   function browseQuery(): [string, string] {
     return [
-      `SELECT P.*, D.* FROM products AS P INNER JOIN devices as D ON D.DEVICE_ID=P.DEVICE_ID  ORDER BY P.BRAND_TRADE_NAME
+      `SELECT P.*, D.* FROM products AS P INNER JOIN devices as D ON D.DEVICE_ID=P.DEVICE_ID
      LIMIT ? OFFSET ?`,
       `SELECT COUNT(*) as total FROM products`,
     ];
