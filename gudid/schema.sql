@@ -64,3 +64,28 @@ pkgStatus string,
 pkgType string
 );
 CREATE INDEX identifiers_PrimaryDI on identifiers(PrimaryDI);
+
+CREATE TABLE sterilizationMethodTypes (
+PrimaryDI string,
+sterilizationMethod string
+);
+CREATE INDEX sterilizationMethodTypes_PrimaryDI ON sterilizationMethodTypes(PrimaryDI);
+
+CREATE TABLE environmentalConditions (
+PrimaryDI string,
+storageHandlingType string,
+"storageHandlingHigh (Unit)" string,
+"storageHandlingHigh (Value)" string,
+"storageHandlingLow (Unit)" string,
+"storageHandlingLow (Value)" string,
+storageHandlingSpecialConditionText string
+);
+CREATE INDEX environmentalConditions_PrimaryDI ON environmentalConditions(PrimaryDI);
+
+CREATE TABLE contacts (
+PrimaryDI string,
+phone string,
+phoneExtension string,
+email string
+);
+CREATE INDEX contacts_PrimaryDI ON contacts(PrimaryDI);

@@ -5,9 +5,10 @@ gudid.sqlite: schema.sql device.txt identifiers.txt contacts.txt gmdnTerms.txt p
 	mpcsv-read -c -D '|' < device.txt | mptable2alist -H | mpsqlite --mode=insert gudid.sqlite device > /dev/null
 	mpcsv-read -D '|' < productCodes.txt | mptable2alist -H | mpsqlite --mode=insert gudid.sqlite productCodes > /dev/null
 	mpcsv-read -D '|' < identifiers.txt | mptable2alist -H | mpsqlite --mode=insert gudid.sqlite identifiers > /dev/null
-# contacts
-# sterilizationMethodTypes
-# environmentalConditions
+	mpcsv-read -D '|' < sterilizationMethodTypes.txt | mptable2alist -H | mpsqlite --mode=insert gudid.sqlite sterilizationMethodTypes > /dev/null
+	mpcsv-read -D '|' < environmentalConditions.txt | mptable2alist -H | mpsqlite --mode=insert gudid.sqlite environmentalConditions > /dev/null
+	mpcsv-read -D '|' < contacts.txt | mptable2alist -H | mpsqlite --mode=insert gudid.sqlite contacts > /dev/null
+
 # deviceSizes
 # premarketSubmissions
 
