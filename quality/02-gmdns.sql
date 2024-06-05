@@ -8,7 +8,7 @@ SELECT
 
 SELECT
    'GMDN terms not 5 digits long',
-   (SELECT COUNT(*) FROM gmdn_term WHERE LENGTH(termCode) <> 5);
+   (SELECT COUNT(*) FROM gmdn_term WHERE NOT (termCode REGEXP '[0-9]{5}'));
 
 SELECT
    'Non-numeric GMDN terms',
