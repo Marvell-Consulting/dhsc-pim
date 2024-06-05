@@ -1,9 +1,6 @@
--- Account for NULL exported as strings
-UPDATE organisations
-    SET REP_ORGANISATION_ID = NULL
-    WHERE REP_ORGANISATION_ID = 'NULL';
-
--- Normalise enums
+-- It looks like in the past this field may have been some sort of free-text
+-- situation. These queries update all of the old records to use the most
+-- popular spelling of each status.
 UPDATE products
     SET "Product Status" = 'On the GB & NI market'
     WHERE "Product Status" IN (
