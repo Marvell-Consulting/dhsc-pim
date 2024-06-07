@@ -9,6 +9,7 @@ gudid.sqlite: schema.sql device.txt identifiers.txt contacts.txt gmdnTerms.txt p
 	mpcsv-read -D '|' < environmentalConditions.txt | mptable2alist -H | mpsqlite --mode=insert gudid.sqlite environmentalConditions > /dev/null
 	mpcsv-read -D '|' < contacts.txt | mptable2alist -H | mpsqlite --mode=insert gudid.sqlite contacts > /dev/null
 
+# These two files haven't been required yet, so we are not yet importing them. If they are required, add appropriate table definitions to schema.sql and then add mpcsv-read | ... lines importing the files:
 # deviceSizes
 # premarketSubmissions
 
