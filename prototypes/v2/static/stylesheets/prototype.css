@@ -1,0 +1,61 @@
+.search-button {
+    display: inline;
+}
+
+dl {
+    display: grid;
+    grid-gap: 4px 16px;
+    grid-template-columns: max-content;
+}
+
+dt {
+    /* font-weight: bold; */
+}
+
+dd {
+    margin: 0;
+    grid-column-start: 2;
+}
+
+.govuk-header.mhra-header {
+    background-color: gray;
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    padding: 20px 0 40px 0;
+    border-bottom: none;
+    
+}
+
+.govuk-header__container {
+    border-bottom: none;
+}
+
+a {
+    color: #1d70b8;
+}
+
+a:hover {
+    color: #003078;
+}
+
+.search-bar {
+    padding-left: 35px;
+    background: url("https://img.icons8.com/search") no-repeat left;
+    background-position-x: 10px;
+    background-size: 20px;
+    margin-bottom: 5px;
+}
+
+.filter-container {
+    padding: 5px 10px;
+    border: 1px solid #b1b4b6;
+    height: 250px;
+    overflow: scroll;
+    overflow-y: scroll;
+}
+  
+.filters .govuk-details__text {
+    border-left:none;
+    padding-left: 0;
+}
