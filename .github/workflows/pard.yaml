@@ -1,6 +1,9 @@
 name: Build PARD data
 
-on: push
+on:
+  push:
+    paths:
+      - pard/**
 
 jobs:
   build:
