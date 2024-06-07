@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - prototypes/basic/**
+      - prototypes/v1/**
 
 jobs:
   deploy:
@@ -14,7 +14,7 @@ jobs:
     concurrency: deploy-group # ensure only one action runs at a time
     defaults:
       run:
-        working-directory: ./prototypes/basic/
+        working-directory: ./prototypes/v1/
     steps:
       - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master

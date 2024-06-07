@@ -1,0 +1,416 @@
+<h1 class="govuk-heading-l">{{BRAND_TRADE_NAME}} {{# PRODUCT_CODE }} - {{ . }} {{/ PRODUCT_CODE }}</h1>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Product classification</caption>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">UDI-DI</th>
+          <td class="govuk-table__cell">
+            {{^ UDI_NUMBER }}  <span class="govuk-hint">Data not available</span> {{/ UDI_NUMBER}}
+            {{# UDI_NUMBER }} {{ . }} {{/UDI_NUMBER}}  
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">GMDN code</th>
+          <td class="govuk-table__cell">
+            {{^ GMDN_CODE }}  <span class="govuk-hint">Data not available</span> {{/ GMDN_CODE}}
+            {{# GMDN_CODE }} {{ . }} - {{GMDN_TERM_NAME}} {{/GMDN_CODE}} 
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Product Code (MPC)</th>
+          <td class="govuk-table__cell">
+            {{^ PRODUCT_CODE }}  <span class="govuk-hint">Data not available</span> {{/ PRODUCT_CODE}}
+            {{# PRODUCT_CODE }} {{ . }} {{/PRODUCT_CODE}}  
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Model</th>
+          <td class="govuk-table__cell">{{ MODEL }}</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Manufacturer</th>
+          <td class="govuk-table__cell">
+            {{^ MANUFACTURER_NAME }}  <span class="govuk-hint">Data not available</span> {{/ MANUFACTURER_NAME}}
+            {{# MANUFACTURER_NAME }} {{ . }} {{/MANUFACTURER_NAME}}
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Supplier</th>
+          <td class="govuk-table__cell">
+            {{^ REP_NAME }}  <span class="govuk-hint">Data not available</span> {{/ REP_NAME}}
+            {{# REP_NAME }} {{ . }} {{/REP_NAME}}  
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+              Production details
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+          <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--m">Production</caption>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">EU Authorised Representative</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">First placed on market</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Still in production</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Production ended</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+              Quality assurance
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+          <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--m">Quality assurance</caption>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">CE-marked for all EC devices</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Medical devices directive classification</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Active implantable devices directive</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">In-Vitro Diagnostics Medical Device Directive Category</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Other EC directive</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Notified Body conformity assessment</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Notified Body conformity assessment ID</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Notified Body </th>
+                <td class="govuk-table__cell">{{ NOTIFIED_BODY_NAME }}</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Certified to management quality system standards</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Management / quality system standards</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Certification body</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+              Product usage
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+          <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--m">Product usage</caption>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">For 'Clinical investigation'</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">MHRA 'no objection' reference number</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">In-Vitro Diagnostic Medical Device for ‘Performance Evaluation’</th>
+                <td class="govuk-table__cell">
+                  {{^ IS_PERFORMANCE_STUDIES }}  <span class="govuk-hint">Data not available</span> {{/ IS_PERFORMANCE_STUDIES}}
+                  {{# IS_PERFORMANCE_STUDIES }} {{ . }} {{/IS_PERFORMANCE_STUDIES}}  
+                </td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Custom made</th>
+                <td class="govuk-table__cell">
+                  {{^ IS_CUSTOM_MADE }}  <span class="govuk-hint">Data not available</span> {{/ IS_CUSTOM_MADE}}
+                  {{# IS_CUSTOM_MADE }} {{ . }} {{/IS_CUSTOM_MADE}}  
+                </td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Prescribing medical practitioner</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+              Support and servicing
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+          <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--m">Support and servicing</caption>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Manufacturer support</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Support includes availability of parts and supply of consumables / accessories</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Support includes training, maintenance, repair, etc.</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Device warranty period</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Working lifetime</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Notification of device alerts or upgrades</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Identical loan equipment available</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Installation / ancillary service requirements</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Disposable, non-serviceable device</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Maintainence / repair and technical support provided</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Servicing facility location</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Servicing staff verifiably trained and competency assessed</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Qualification / competency records available on request</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Servicing organisation currently certified to any management system standards</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Management system standards</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Certification body</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Contract alternatives offered include an option for in-house equipment servicing</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+              Health and safety
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+          <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--m">Health and safety</caption>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Level of required device decontamination</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Instructions meet the requirements of EN-ISO-17664</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Needs processing or reprocessing before or between uses</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Limited device reprocessing cycles</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Limit of device reprocessing cycles</th>
+                <td class="govuk-table__cell">{{ MAXIMUM_NUMBER_REUSE }}</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Device is uniquely identifiable</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Single use</th>
+                <td class="govuk-table__cell">
+                  {{^ SINGLE_USE_DEVICE }}  <span class="govuk-hint">Data not available</span> {{/ SINGLE_USE_DEVICE}}
+                  {{# SINGLE_USE_DEVICE }} {{ . }} {{/SINGLE_USE_DEVICE}}  
+                </td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Implantable</th>
+                <td class="govuk-table__cell">
+                  {{^ DEVICE_IMPLANTABLE }}  <span class="govuk-hint">Data not available</span> {{/ DEVICE_IMPLANTABLE}}
+                  {{# DEVICE_IMPLANTABLE }} {{ . }} {{/DEVICE_IMPLANTABLE}}  
+                </td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">
+                Unit of issue
+                </th>
+                <td class="govuk-table__cell">
+                  {{^ UNIT_OF_USE_UDI_DI }}  <span class="govuk-hint">Data not available</span> {{/ UNIT_OF_USE_UDI_DI}}
+                  {{# UNIT_OF_USE_UDI_DI }} {{ . }} {{/UNIT_OF_USE_UDI_DI}}
+                </td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">
+                  Sterile
+                </th>
+                <td class="govuk-table__cell">
+                  {{^ IS_STERILE }}  <span class="govuk-hint">Data not available</span> {{/ IS_STERILE}}
+                  {{# IS_STERILE }} {{ . }} {{/IS_STERILE}}
+                </td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">
+                  Contains latex
+                </th>
+                <td class="govuk-table__cell">
+                  {{^ IS_CONTAINING_LATEX }}  <span class="govuk-hint">Data not available</span> {{/ IS_CONTAINING_LATEX}}
+                  {{# IS_CONTAINING_LATEX }} {{ . }} {{/IS_CONTAINING_LATEX}}
+                </td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Stores or transmits patient information that will require information governance measures</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Connects to IT or network services</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Requires safety management measures</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Identified hazards</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Requires performance quality assurance measures</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Quality assurance measures</th>
+                <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+              Document downloads
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+          <h2 class="govuk-heading-m">Document downloads</h2>
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="#">Device brochure / specification</a></li>
+            <li><a href="#">EC Declaration/s of Conformity</a></li>
+            <li><a href="#">MHRA’s notice of ‘no objection’ for Medical Device ‘Clinical Investigation’</a></li>
+            <li><a href="#">Notification to MHRA for In-Vitro Diagnostic Medical Device ‘Performance Evaluation’</a></li>
+            <li><a href="#">Warranty details</a></li>
+            <li><a href="#">Details for end-of-life waste management of the Device</a></li>
+            <li><a href="#">Protocol for post-delivery Device inspection / acceptance testing</a></li>
+            <li><a href="#">Installation requirements</a></li>
+            <li><a href="#">Service support contract options for maintenance / repair</a></li>
+            <li><a href="#">Availability of spare / replacement parts</a></li>
+            <li><a href="#">Information / test equipment / tooling / software required for Device servicing</a></li>
+            <li><a href="#">Validated decontamination instructions / protocols</a></li>
+            <li><a href="#">Requirements for special reprocessing equipment, tools and materials</a></li>
+            <li><a href="#">Special post-processing Device storage requirements</a></li>
+            <li><a href="#">Patient information capture / encryption / storage / transmission / deletion</a></li>
+            <li><a href="#">Device IT software / hardware compatibility requirements</a></li>
+            <li><a href="#">Provisions made for Device IT cybersecurity</a></li>
+            <li><a href="#">Particular hazards that require special safety management</a></li>
+            <li><a href="#">Particular performance quality assurance measures required NOT</a></li>
+            <li><a href="#">User training offered</a></li>
+            <li><a href="#">Technical training offered</a></li>
+            <li><a href="#">Decontamination training offered</a></li>
+            <li><a href="#">Any additional support facilities offered</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
