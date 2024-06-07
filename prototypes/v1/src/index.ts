@@ -13,7 +13,7 @@ const app: Express = express();
 const db = new Database(config.database_file, { readonly: true });
 
 // Set the DB for the app so controllers can extract it with
-// `request.app.get("db")`
+// `request.app.get("db")`.
 app.set("db", db);
 
 // Configure templating for controllers
