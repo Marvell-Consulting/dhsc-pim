@@ -47,6 +47,7 @@ export module Controllers {
     let rangeText = "";
     let total = 0;
     let products: PARDProduct[] = [];
+    let sortBy = getSearchSort(request.query.sort?.toString() || "");
 
     if (term.trim().length == 0) {
       let [query, countQuery] = browseQuery();
@@ -55,8 +56,7 @@ export module Controllers {
     } else {
       let qterm = removePunctuation(term);
 
-      let query =
-        "select rank, PRODUCT_ID from search where search match ? order by rank LIMIT ? OFFSET ?;";
+      let query = `select rank, PRODUCT_ID from search where search match ? order by ${sortBy} LIMIT ? OFFSET ?;`;
       let countQuery =
         "select count(PRODUCT_ID) as total from search where search match ?";
       let idResults = db.prepare(query).all(qterm, limit, offset);
@@ -124,6 +124,18 @@ export module Controllers {
     var inExpression = ids.join(",");
 
     return `SELECT P.*,D.* FROM products as P INNER JOIN devices as D ON D.DEVICE_ID=P.DEVICE_ID WHERE PRODUCT_ID IN (${inExpression})`;
+  }
+
+  function getSearchSort(sortTerm: string): string {
+    let sortBy = "rank";
+    if (sortTerm == "") return sortBy;
+
+    if (sortTerm.charAt(0) == "-") {
+      let subSort = sortTerm.slice(1);
+      return `lower(trim(${subSort})) DESC`;
+    }
+
+    return `lower(trim(${sortTerm}))`;
   }
 
   export function detail(request: Request, response: Response) {
