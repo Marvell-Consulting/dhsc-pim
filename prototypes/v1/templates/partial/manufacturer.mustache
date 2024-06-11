@@ -1,0 +1,45 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+<table class="govuk-table">
+  <caption class="govuk-table__caption govuk-table__caption--m">Manufacturer details</caption>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">
+        Manufacturer name
+      </th>
+      <td class="govuk-table__cell">
+        {{ MAN_ORGANISATION_NAME }}
+      </td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">
+        Manufacturer product code (MPC)
+      </th>
+      <td class="govuk-table__cell">
+        {{ PRODUCT_CODE }}
+      </td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">
+        Companies house registration number
+      </th>
+      <td class="govuk-table__cell">
+         {{# COMPANY_REGISTRATION_NUMBER }}
+            <a class="govuk-link" href="">{{.}}</a>
+         {{/COMPANY_REGISTRATION_NUMBER}}
+         {{^ COMPANY_REGISTRATION_NUMBER }}
+            No data
+         {{/COMPANY_REGISTRATION_NUMBER}}
+      </td>
+    </tr>
+
+
+  </tbody>
+</table>
+
+  </div>
+</div>

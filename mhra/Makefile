@@ -2,7 +2,8 @@
 
 basedata=DeviceRegistration_Devices_20240330.txt DeviceRegistration_Organisation_20240330.txt DeviceProductQuery2024-05-07.txt
 
-all: mhra.sqlite
+.PHONY: all
+all: mhra.sqlite rename_products normalise_status fix_nulls
 
 clean:
 	rm mhra.sqlite
@@ -33,5 +34,16 @@ mhra.sqlite: read-products-2.sh schema.sql import-gmdn.sql import-gudid.sql mate
 	mpcsv-read -T < DeviceRegistration_Devices_20240330.txt  | mptable2alist -H | mpsqlite --mode=insert mhra.sqlite devices > /dev/null
 	sqlite3 mhra.sqlite < materialise-gudid-join.sql
 
+# Data cleanup
+
+.PHONY: rename_products
 rename_products:
 	cat rename_product_fields.sql | sqlite3 mhra.sqlite
+
+.PHONY: normalise_status
+normalise_status:
+	sqlite3 mhra.sqlite <normalise_product_status.sql
+
+.PHONY: fix_nulls
+fix_nulls:
+	sqlite3 mhra.sqlite <fix_nulls.sql
