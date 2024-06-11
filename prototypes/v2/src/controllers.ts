@@ -9,7 +9,7 @@ export module Controllers {
   // const config = new Config();
 
   export function index(_request: Request, response: Response) {
-    response.render("index");
+    response.render("home");
   }
 
   export function home(_request: Request, response: Response) {

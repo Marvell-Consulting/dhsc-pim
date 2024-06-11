@@ -48,7 +48,7 @@ if (config.auth_username.length > 0 && config.auth_password.length > 0) {
 }
 
 // Set up routes for controllers
-app.get("/", Controllers.index);
+app.get("/", Controllers.home);
 app.get("/home", Controllers.home);
 app.get("/search", Controllers.search);
 app.get("/product/:id", Controllers.detail);
