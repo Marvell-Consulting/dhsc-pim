@@ -11,9 +11,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: ccorsi/setup-sqlite@v1.0.1
+        with:
+          sqlite-version: 3.43.2
+          sqlite-year: 2023
       - run: make -j -C pard
       - uses: actions/upload-artifact@v4
         with:
           name: pard.sqlite
           path: pard/pard.sqlite
+          if-no-files-found: error
+      - run: make -j -C quality
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pard-quality.csv
+          path: pard/pard-quality.csv
           if-no-files-found: error

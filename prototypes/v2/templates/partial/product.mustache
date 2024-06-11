@@ -17,14 +17,14 @@
           <th scope="row" class="govuk-table__header">UDI-DI</th>
           <td class="govuk-table__cell">
             {{^ UDI_NUMBER }}  <span class="govuk-hint">Data not available</span> {{/ UDI_NUMBER}}
-            {{# UDI_NUMBER }} {{ . }} {{/UDI_NUMBER}}  
+            {{# UDI_NUMBER }} {{ . }} {{/UDI_NUMBER}}
           </td>
         </tr>
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">GMDN code</th>
           <td class="govuk-table__cell">
             {{^ GMDN_CODE }}  <span class="govuk-hint">Data not available</span> {{/ GMDN_CODE}}
-            {{# GMDN_CODE }} {{ . }} - {{GMDN_TERM_NAME}} {{/GMDN_CODE}} 
+            {{# GMDN_CODE }} {{ . }} - {{GMDN_TERM_NAME}} {{/GMDN_CODE}}
           </td>
         </tr>
         <tr class="govuk-table__row">
@@ -62,7 +62,7 @@
           <th scope="row" class="govuk-table__header">Supplier</th>
           <td class="govuk-table__cell">
             {{^ REP_NAME }}  <span class="govuk-hint">Data not available</span> {{/ REP_NAME}}
-            {{# REP_NAME }} {{ . }} {{/REP_NAME}}  
+            {{# REP_NAME }} {{ . }} {{/REP_NAME}}
           </td>
         </tr>
         <tr class="govuk-table__row">
@@ -201,7 +201,7 @@
                 <th scope="row" class="govuk-table__header">In-Vitro Diagnostic Medical Device for ‘Performance Evaluation’</th>
                 <td class="govuk-table__cell">
                   {{^ IS_PERFORMANCE_STUDIES }}  <span class="govuk-hint">Data not available</span> {{/ IS_PERFORMANCE_STUDIES}}
-                  {{# IS_PERFORMANCE_STUDIES }} {{ . }} {{/IS_PERFORMANCE_STUDIES}}  
+                  {{# IS_PERFORMANCE_STUDIES }} {{ . }} {{/IS_PERFORMANCE_STUDIES}}
                 </td>
               </tr>
               <tr class="govuk-table__row conditional">
@@ -212,7 +212,7 @@
                 <th scope="row" class="govuk-table__header">Custom made</th>
                 <td class="govuk-table__cell">
                   {{^ IS_CUSTOM_MADE }}  <span class="govuk-hint">Data not available</span> {{/ IS_CUSTOM_MADE}}
-                  {{# IS_CUSTOM_MADE }} {{ . }} {{/IS_CUSTOM_MADE}}  
+                  {{# IS_CUSTOM_MADE }} {{ . }} {{/IS_CUSTOM_MADE}}
                 </td>
               </tr>
               <tr class="govuk-table__row conditional">
@@ -227,13 +227,13 @@
         <div class="govuk-accordion__section-header">
           <h2 class="govuk-accordion__section-heading">
             <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-              Support and servicing
+              Support
             </span>
           </h2>
         </div>
         <div id="accordion-default-content-1" class="govuk-accordion__section-content">
           <table class="govuk-table">
-            <caption class="govuk-table__caption govuk-table__caption--m">Support and servicing</caption>
+            <caption class="govuk-table__caption govuk-table__caption--m">Support</caption>
             <tbody class="govuk-table__body">
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">Manufacturer support</th>
@@ -244,16 +244,16 @@
                 <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
               </tr>
               <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">Support includes training, maintenance, repair, etc.</th>
+                <th scope="row" class="govuk-table__header">Support includes training, maintenance or repair</th>
                 <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
               </tr>
               <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">Device warranty period</th>
+                <th scope="row" class="govuk-table__header">
+                  Device warranty period
+                  <br>
+                  <span class="govuk-hint">This is the standard warranty period, but it may vary by geography or procurement framework.
+                </th>
                 <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
-              </tr>
-              <tr class="govuk-table__row conditional">
-                <th scope="row" class="govuk-table__header">Warrenty details</th>
-                <td class="govuk-table__cell"><a href="#">Download&nbsp;details</a><br>(PDF, 1.2MB)</td>
               </tr>
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">Working lifetime</th>
@@ -276,19 +276,36 @@
                 <td class="govuk-table__cell"><a href="#">Download&nbsp;protocols</a><br>(PDF, 1.2MB)</td>
               </tr>
               <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">Installation / ancillary service requirements</th>
+                <th scope="row" class="govuk-table__header">Installation or ancillary service requirements</th>
                 <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
               </tr>
               <tr class="govuk-table__row conditional">
                 <th scope="row" class="govuk-table__header">Details of installation requirements</th>
                 <td class="govuk-table__cell"><a href="#">Download&nbsp;requirements</a><br>(PDF, 1.2MB)</td>
               </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+              Servicing
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+          <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--m">Servicing</caption>
+            <tbody class="govuk-table__body">
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">Disposable, non-serviceable device</th>
                 <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
               </tr>
               <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">Maintainence / repair and technical support provided</th>
+                <th scope="row" class="govuk-table__header">Maintenence, repair and technical support provided</th>
                 <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
               </tr>
               <tr class="govuk-table__row conditional">
@@ -303,8 +320,8 @@
                 <th scope="row" class="govuk-table__header">Servicing staff verifiably trained and competency assessed</th>
                 <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
               </tr>
-              <tr class="govuk-table__row conditional">
-                <th scope="row" class="govuk-table__header">Qualification / competency records available on request</th>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Qualification or competency records available on request</th>
                 <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
               </tr>
               <tr class="govuk-table__row">
@@ -335,6 +352,7 @@
           </table>
         </div>
       </div>
+      
       <div class="govuk-accordion__section">
         <div class="govuk-accordion__section-header">
           <h2 class="govuk-accordion__section-heading">
@@ -347,8 +365,42 @@
           <table class="govuk-table">
             <caption class="govuk-table__caption govuk-table__caption--m">Health and safety</caption>
             <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Implantable</th>
+              <td class="govuk-table__cell">
+                {{^ DEVICE_IMPLANTABLE }}  <span class="govuk-hint">Data not available</span> {{/ DEVICE_IMPLANTABLE}}
+                {{# DEVICE_IMPLANTABLE }} {{ . }} {{/DEVICE_IMPLANTABLE}}
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Single use</th>
+              <td class="govuk-table__cell">
+                {{^ SINGLE_USE_DEVICE }}  <span class="govuk-hint">Data not available</span> {{/ SINGLE_USE_DEVICE}}
+                {{# SINGLE_USE_DEVICE }} {{ . }} {{/SINGLE_USE_DEVICE}}
+              </td>
+            </tr>
+          
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">
+              Unit of issue
+              </th>
+              <td class="govuk-table__cell">
+                {{^ UNIT_OF_USE_UDI_DI }}  <span class="govuk-hint">Data not available</span> {{/ UNIT_OF_USE_UDI_DI}}
+                {{# UNIT_OF_USE_UDI_DI }} {{ . }} {{/UNIT_OF_USE_UDI_DI}}
+              </td>
+            </tr>
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">
+                Sterile
+              </th>
+              <td class="govuk-table__cell">
+                {{^ IS_STERILE }}  <span class="govuk-hint">Data not available</span> {{/ IS_STERILE}}
+                {{# IS_STERILE }} {{ . }} {{/IS_STERILE}}
+              </td>
+            </tr>
               <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">Level of required device decontamination</th>
+                <th scope="row" class="govuk-table__header">Level of decontamination needed</th>
                 <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
               </tr>
               <tr class="govuk-table__row conditional">
@@ -383,39 +435,6 @@
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">Device is uniquely identifiable</th>
                 <td class="govuk-table__cell"><span class="govuk-hint">Data not available</span></td>
-              </tr>
-              <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">Single use</th>
-                <td class="govuk-table__cell">
-                  {{^ SINGLE_USE_DEVICE }}  <span class="govuk-hint">Data not available</span> {{/ SINGLE_USE_DEVICE}}
-                  {{# SINGLE_USE_DEVICE }} {{ . }} {{/SINGLE_USE_DEVICE}}  
-                </td>
-              </tr>
-              <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">Implantable</th>
-                <td class="govuk-table__cell">
-                  {{^ DEVICE_IMPLANTABLE }}  <span class="govuk-hint">Data not available</span> {{/ DEVICE_IMPLANTABLE}}
-                  {{# DEVICE_IMPLANTABLE }} {{ . }} {{/DEVICE_IMPLANTABLE}}  
-                </td>
-              </tr>
-              <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">
-                Unit of issue
-                </th>
-                <td class="govuk-table__cell">
-                  {{^ UNIT_OF_USE_UDI_DI }}  <span class="govuk-hint">Data not available</span> {{/ UNIT_OF_USE_UDI_DI}}
-                  {{# UNIT_OF_USE_UDI_DI }} {{ . }} {{/UNIT_OF_USE_UDI_DI}}
-                </td>
-              </tr>
-
-              <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">
-                  Sterile
-                </th>
-                <td class="govuk-table__cell">
-                  {{^ IS_STERILE }}  <span class="govuk-hint">Data not available</span> {{/ IS_STERILE}}
-                  {{# IS_STERILE }} {{ . }} {{/IS_STERILE}}
-                </td>
               </tr>
 
               <tr class="govuk-table__row">
