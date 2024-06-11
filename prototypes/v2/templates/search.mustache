@@ -40,6 +40,16 @@
       </div>
 
       <div class="govuk-grid-column-one-third filters">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--s" for="sort">
+            Sort results
+          </label>
+          <select class="govuk-select" id="sort" name="sort">
+            <option value="updated" selected>Most relevant</option>
+            <option value="views">Product name (A to Z)</option>
+            <option value="comments">Manufacturer name (A to Z)</option>
+          </select>
+        </div>
         <h2 class="govuk-heading-s">Filter results</h2>
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
@@ -56,6 +66,7 @@
                   <h1 class="govuk-fieldset__heading">
                     NHS eClass
                   </h1>
+                  <span class="govuk-hint">Some hint text</span>
                 </legend>
                 <div class="filter-container">
                 <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
@@ -1018,6 +1029,52 @@
                           Yes
                         </label>
                       </div> }}
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="organisation-2" name="organisation" type="checkbox" value="employment-tribunal">
+                        <label class="govuk-label govuk-checkboxes__label" for="organisation-2">
+                          No
+                        </label>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="govuk-form-group">
+                  <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                      <h1 class="govuk-fieldset__heading">
+                        Contains latex
+                      </h1>
+                    </legend>
+                    <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                        <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                          Yes
+                        </label>
+                      </div>
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="organisation-2" name="organisation" type="checkbox" value="employment-tribunal">
+                        <label class="govuk-label govuk-checkboxes__label" for="organisation-2">
+                          No
+                        </label>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="govuk-form-group">
+                  <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                      <h1 class="govuk-fieldset__heading">
+                        Sterile
+                      </h1>
+                    </legend>
+                    <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                        <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                          Yes
+                        </label>
+                      </div>
                       <div class="govuk-checkboxes__item">
                         <input class="govuk-checkboxes__input" id="organisation-2" name="organisation" type="checkbox" value="employment-tribunal">
                         <label class="govuk-label govuk-checkboxes__label" for="organisation-2">

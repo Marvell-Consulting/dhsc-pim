@@ -59,3 +59,17 @@ a:hover {
     border-left:none;
     padding-left: 0;
 }
+
+
+/* Showing conditional fields within tables */
+.govuk-table__row.conditional .govuk-table__header {
+    border-top: 2px solid #ffffff;
+    padding-left: 16px;
+    padding-top: 0px;
+    font-weight: normal;
+}
+
+.govuk-table__row.conditional .govuk-table__cell {
+    border-top: 2px solid #ffffff;
+    padding-top: 0px;
+}
