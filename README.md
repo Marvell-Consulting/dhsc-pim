@@ -37,3 +37,22 @@ npm run dev
 You can now view the prototype at [http://127.0.0.1:3000/](http://127.0.0.1:3000/).
 
 Further information on interacting with the basic prototype is available in the [README](prototypes/basic/README.md).
+
+## Data import scripts
+
+The gmdn, gudid, mhra, and pard directories contain scripts to import data from these sources into sqlite databases.
+
+The gmdn, gudid, and mhra importers use [Magic
+Pipes](https://www.kitten-technologies.co.uk/project/magic-pipes) to parse
+delimited files and process data into sqlite. To get Magic Pipes, install [Chicken Scheme 5](http://call-cc.org/) onto your system and then run:
+
+```
+chicken-install magic-pipes
+```
+
+All the importers use makefiles, so you can generate the data by running `make`
+in the appropriate directory.
+
+The mhra importer also incorporates the gmdn and gudid data, so the gmdn and gudid importers must have been run before you run `make` in the mhra directory.
+
+Note that the gmdn, gudid, and mhra importers require a copy of the data to be obtained - which is not included in this repository. The pard importer pulls data from a public API.
