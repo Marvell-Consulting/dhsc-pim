@@ -2,41 +2,44 @@ import { Request, Response } from "express";
 //import { Config } from "./config";
 import { PARDProduct } from "./models";
 import { pagination } from "./pagination";
+import { parseFmt, getRenderer, RenderTarget } from "./render";
 
 const PAGE_SIZE: number = 10;
 
 export module Controllers {
-  // const config = new Config();
 
   export function index(_request: Request, response: Response) {
-    response.render("home");
+    getRenderer(RenderTarget.HTML, "home", response)({});
   }
 
   export function home(_request: Request, response: Response) {
-    response.render("home");
+    getRenderer(RenderTarget.HTML, "home", response)({});
   }
 
   export function wound(_request: Request, response: Response) {
-    response.render("wound");
+    getRenderer(RenderTarget.HTML, "wound", response)({});
   }
 
   export function paq(_request: Request, response: Response) {
-    response.render("paq");
+    getRenderer(RenderTarget.HTML, "paq", response)({});
   }
 
   export function paq2(_request: Request, response: Response) {
-    response.render("paq2");
+    getRenderer(RenderTarget.HTML, "paq2", response)({});
   }
 
   export function multiple(_request: Request, response: Response) {
-    response.render("multiple");
+    getRenderer(RenderTarget.HTML, "multiple", response)({});
   }
 
   export function multipleresults(_request: Request, response: Response) {
-    response.render("multipleresults");
+    getRenderer(RenderTarget.HTML, "multipleresults", response)({});
   }
 
   export function search(request: Request, response: Response) {
+    let format = parseFmt(request.query.format?.toString() || "html");
+    let render = getRenderer(format, "search", response);
+
     let term: string = request.query.search?.toString() || "";
     let page = parseInt(request.query.page?.toString() || "1");
     let limit = PAGE_SIZE;
@@ -55,10 +58,20 @@ export module Controllers {
     } else {
       let qterm = removePunctuation(term);
 
-      let query =
-        "select rank, PRODUCT_ID from search where search match ? order by rank LIMIT ? OFFSET ?;";
       let countQuery =
         "select count(PRODUCT_ID) as total from search where search match ?";
+      total = db.prepare(countQuery).get(qterm).total;
+
+      // Bump the limit for Excel and CSV to a large, but not unreasonable number for PoC.
+      // Ideally we'd want to iterate/cursor our way through large number of results but that
+      // would make the HTML rendering harder, so for prototypes we'll send a reasonably high limit
+      if (format == RenderTarget.EXCEL || format == RenderTarget.CSV) {
+        offset = 0;
+        limit = 5000;
+      }
+
+      let query =
+        "select rank, PRODUCT_ID from search where search match ? order by rank LIMIT ? OFFSET ?;";
       let idResults = db.prepare(query).all(qterm, limit, offset);
 
       if (idResults.length > 0) {
@@ -68,7 +81,6 @@ export module Controllers {
         query = getByIds(ids);
 
         products = db.prepare(query).all();
-        total = db.prepare(countQuery).get(qterm).total;
       }
     }
 
@@ -99,7 +111,19 @@ export module Controllers {
       }
     }
 
-    response.render("search", {
+    let csv_url = "";
+    let excel_url = "";
+
+    if (total > 0) {
+      let thisPage = new URL(fullURL);
+      thisPage.searchParams.append("format", "excel");
+      excel_url = thisPage.toString();
+
+      thisPage.searchParams.set("format", "csv");
+      csv_url = thisPage.toString();
+    }
+
+    render({
       term: request.query["search"] || "",
       back: request.get("Referrer"),
       total: total,
@@ -109,6 +133,8 @@ export module Controllers {
       has_previous_page: has_previous_page,
       has_next_page: has_next_page,
       pages: pages,
+      csv_download: csv_url,
+      excel_download: excel_url,
     });
   }
 
@@ -127,6 +153,9 @@ export module Controllers {
   }
 
   export function detail(request: Request, response: Response) {
+    let format = parseFmt(request.query.format?.toString() || "html");
+    let render = getRenderer(format, "detail", response);
+
     let query = `SELECT P.*, D.* FROM products AS P INNER JOIN devices as D ON D.DEVICE_ID=P.DEVICE_ID WHERE PRODUCT_ID = ?`;
 
     let db = request.app.get("db");
@@ -153,12 +182,30 @@ export module Controllers {
       debug = product;
     }
 
-    response.render("detail", {
+    let fullURL = `${request.protocol}://${request.get("host")}${request.originalUrl}`;
+    let thisPage = new URL(fullURL);
+    thisPage.searchParams.append("format", "excel");
+    let excel_url = thisPage.toString();
+
+    thisPage.searchParams.set("format", "csv");
+    let csv_url = thisPage.toString();
+
+    var obj: { [k: string]: any } = {
       back: request.get("Referrer"),
-      product: product,
       manufacturer: manufacturer,
       debug: debug,
-    });
+      excel_download: excel_url,
+      csv_download: csv_url,
+      term: product.PRODUCT_ID.toString(), // for the filename where used
+    };
+
+    // FUDGE to show a single row when an array is necessary
+    if (format != RenderTarget.HTML) {
+      obj.products = [product];
+    } else {
+      obj.product = product;
+    }
+    render(obj);
   }
 }
 
