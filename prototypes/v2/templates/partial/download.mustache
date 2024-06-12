@@ -1,20 +1,25 @@
 
         <h2 class="govuk-heading-m">Download data</h2>
         <ul class="govuk-list">
+         {{# csv_download }}
           <li>
-            <a class="govuk-link"  href="">Download as a CSV</a>
+            <a class="govuk-link"  href="{{ csv_download }}">Download as CSV</a>
           </li>
+          {{/ csv_download }}
+          {{# excel_download }}
           <li>
-            <a class="govuk-link" href="">Download as an XLS</a>
+            <a class="govuk-link" href="{{ excel_download }}">Download as XLS</a>
           </li>
-          <li>
+          {{/ excel_download }}
+          <!-- <li>
             <a class="govuk-link" href="">Download as XML</a>
           </li>
+          -->
           <li>
             <a class="govuk-link"  href="">API access</a>
           </li>
         </ul>
-{{! 
+{{!
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
         <h2 class="govuk-heading-m">Anything wrong with this data?</h2>
