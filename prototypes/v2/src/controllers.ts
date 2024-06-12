@@ -151,16 +151,26 @@ export module Controllers {
     return `SELECT P.*,D.* FROM products as P INNER JOIN devices as D ON D.DEVICE_ID=P.DEVICE_ID WHERE PRODUCT_ID IN (${inExpression})`;
   }
 
-  function getSearchSort(sortTerm: string): string {
-    let sortBy = "rank";
-    if (sortTerm == "") return sortBy;
+  const sortLookup = new Map<string, string>([
+    ["manufacturer", "lower(trim(MANUFACTURER))"],
+    ["name", "lower(trim(PRODUCT))"],
+    ["term", "lower(trim(GMDN))"],
+  ]);
 
-    if (sortTerm.charAt(0) == "-") {
-      let subSort = sortTerm.slice(1);
-      return `lower(trim(${subSort})) DESC`;
+  const defaultSort = "rank";
+
+  function getSearchSort(sortTerm: string): string {
+    let key = sortTerm;
+    if (sortTerm == "") return defaultSort;
+
+    let direction = "";
+    if (key.charAt(0) == "-") {
+      direction = "DESC";
+      key = key.slice(1);
     }
 
-    return `lower(trim(${sortTerm}))`;
+    let ordering = sortLookup.get(key) || defaultSort;
+    return `${ordering} ${direction}`;
   }
 
   export function detail(request: Request, response: Response) {
