@@ -7,12 +7,9 @@ import { parseFmt, getRenderer, RenderTarget } from "./render";
 const PAGE_SIZE: number = 10;
 
 export module Controllers {
-  // const config = new Config();
-
-  // Color = Color[green];
 
   export function index(_request: Request, response: Response) {
-    getRenderer(RenderTarget.HTML, "index", response)({});
+    getRenderer(RenderTarget.HTML, "home", response)({});
   }
 
   export function home(_request: Request, response: Response) {
