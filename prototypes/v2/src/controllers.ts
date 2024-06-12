@@ -7,7 +7,6 @@ import { parseFmt, getRenderer, RenderTarget } from "./render";
 const PAGE_SIZE: number = 10;
 
 export module Controllers {
-
   export function index(_request: Request, response: Response) {
     getRenderer(RenderTarget.HTML, "home", response)({});
   }
@@ -50,6 +49,7 @@ export module Controllers {
     let rangeText = "";
     let total = 0;
     let products: PARDProduct[] = [];
+    let sortBy = getSearchSort(request.query.sort?.toString() || "");
 
     if (term.trim().length == 0) {
       let [query, countQuery] = browseQuery();
@@ -70,8 +70,7 @@ export module Controllers {
         limit = 5000;
       }
 
-      let query =
-        "select rank, PRODUCT_ID from search where search match ? order by rank LIMIT ? OFFSET ?;";
+      let query = `select rank, PRODUCT_ID from search where search match ? order by ${sortBy} LIMIT ? OFFSET ?;`;
       let idResults = db.prepare(query).all(qterm, limit, offset);
 
       if (idResults.length > 0) {
@@ -227,4 +226,26 @@ function clean_boolean(val?: string | undefined): string {
 
 function removePunctuation(text: string): string {
   return text.replace(/[^\w\s]|_/g, "");
+}
+
+const sortLookup = new Map<string, string>([
+  ["manufacturer", "lower(trim(MANUFACTURER))"],
+  ["name", "lower(trim(PRODUCT))"],
+  ["term", "lower(trim(GMDN))"],
+]);
+
+const defaultSort = "rank";
+
+function getSearchSort(sortTerm: string): string {
+  let key = sortTerm;
+  if (sortTerm == "") return defaultSort;
+
+  let direction = "";
+  if (key.charAt(0) == "-") {
+    direction = "DESC";
+    key = key.slice(1);
+  }
+
+  let ordering = sortLookup.get(key) || defaultSort;
+  return `${ordering} ${direction}`;
 }
