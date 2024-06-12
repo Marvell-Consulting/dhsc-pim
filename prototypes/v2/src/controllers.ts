@@ -134,7 +134,37 @@ export module Controllers {
       pages: pages,
       csv_download: csv_url,
       excel_download: excel_url,
+      sort: getSortOptions(fullURL),
     });
+  }
+
+  function getSortOptions(url: string): any {
+    let sort_options = {
+      relevant: "",
+      manufacturer_az: "",
+      manufacturer_za: "",
+      name_az: "",
+      name_za: "",
+    };
+
+    let sortURL = new URL(url);
+    sortURL.searchParams.delete("page");
+    sortURL.searchParams.delete("sort");
+    sort_options.relevant = sortURL.toString();
+
+    sortURL.searchParams.set("sort", "manufacturer");
+    sort_options.manufacturer_az = sortURL.toString();
+
+    sortURL.searchParams.set("sort", "-manufacturer");
+    sort_options.manufacturer_za = sortURL.toString();
+
+    sortURL.searchParams.set("sort", "name");
+    sort_options.name_az = sortURL.toString();
+
+    sortURL.searchParams.set("sort", "-name");
+    sort_options.name_za = sortURL.toString();
+
+    return sort_options;
   }
 
   function browseQuery(): [string, string] {

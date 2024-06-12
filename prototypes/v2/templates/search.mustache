@@ -45,9 +45,9 @@
             Sort results
           </label>
           <select class="govuk-select" id="sort" name="sort">
-            <option value="updated" selected>Most relevant</option>
-            <option value="views">Product name (A to Z)</option>
-            <option value="comments">Manufacturer name (A to Z)</option>
+            <option value="{{ sort.relevant }}" selected>Most relevant</option>
+            <option value="{{ sort.name_az }}">Product name (A to Z)</option>
+            <option value="{{ sort.manufacturer_az }}">Manufacturer name (A to Z)</option>
           </select>
         </div>
         <h2 class="govuk-heading-s">Filter results</h2>
@@ -568,7 +568,7 @@
                     </div>
                   </fieldset>
                 </div>
-                
+
                 <div class="govuk-form-group">
                   <fieldset class="govuk-fieldset">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
@@ -783,9 +783,9 @@
             </div>
           </div>
         </details>
-        
+
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-        
+
         <details class="govuk-details">
           <summary class="govuk-details__summary">
             <span class="govuk-details__summary-text">
