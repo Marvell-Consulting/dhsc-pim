@@ -1361,4 +1361,34 @@
     </div>
   </main>
 
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+    sb = document. getElementById("search");
+    if (sb.value.toLowerCase().includes("catheter")) {
+        const words = sb.value.split(" ").map(function(s) {return s.toLowerCase()});
+
+        const elements = document.querySelectorAll("div.search-result dd");
+        for (i in elements ) {
+            let inner = elements[i].innerHTML;
+            if ( inner == undefined ||   inner.includes("govuk-hint")) {
+                continue;
+            }
+
+            let lower = inner.toLowerCase();
+            for (wi in words) {
+                let word = words[wi];
+
+                if (inner.indexOf(word) >= 0 ) {
+                    inner = inner.replace(word, "<b>" + word + "</b>");
+                }
+            }
+
+            if( inner != elements[i].innerHTML ) {
+                elements[i].innerHTML = inner;
+            }
+        }
+    }
+});
+</script>
+
 {{> layout/footer}}
