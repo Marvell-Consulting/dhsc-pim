@@ -24,7 +24,6 @@ dd {
     font-weight: bold;
     padding: 20px 0 40px 0;
     border-bottom: none;
-    
 }
 
 .govuk-header__container {
@@ -54,12 +53,11 @@ a:hover {
     overflow: scroll;
     overflow-y: scroll;
 }
-  
+
 .filters .govuk-details__text {
-    border-left:none;
+    border-left: none;
     padding-left: 0;
 }
-
 
 /* Showing conditional fields within tables */
 .govuk-table__row.conditional .govuk-table__header {
@@ -72,4 +70,9 @@ a:hover {
 .govuk-table__row.conditional .govuk-table__cell {
     border-top: 2px solid #ffffff;
     padding-top: 0px;
+}
+
+.search-result dd b {
+    background: #fffacd;
+    font-weight: normal;
 }
