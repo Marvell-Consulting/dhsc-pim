@@ -7,7 +7,6 @@ import { parseFmt, getRenderer, RenderTarget } from "./render";
 const PAGE_SIZE: number = 10;
 
 export module Controllers {
-
   export function index(_request: Request, response: Response) {
     getRenderer(RenderTarget.HTML, "home", response)({});
   }
@@ -211,7 +210,7 @@ export module Controllers {
 
 function clean_boolean(val?: string | undefined): string {
   if (val === null || val === undefined || val == "" || val == "NULL") {
-    return "Not specified";
+    return "";
   }
 
   if (val === "0") {
