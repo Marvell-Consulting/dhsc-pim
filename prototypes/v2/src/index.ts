@@ -57,6 +57,7 @@ app.get("/paq", Controllers.paq);
 app.get("/paq2", Controllers.paq2);
 app.get("/multiple", Controllers.multiple);
 app.get("/multipleresults", Controllers.multipleresults);
+app.get("/comparison", Controllers.comparison);
 
 app.use(express.static("static"));
 

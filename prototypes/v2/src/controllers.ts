@@ -36,6 +36,10 @@ export module Controllers {
     getRenderer(RenderTarget.HTML, "multipleresults", response)({});
   }
 
+  export function comparison(_request: Request, response: Response) {
+    getRenderer(RenderTarget.HTML, "comparison", response)({});
+  }
+
   export function search(request: Request, response: Response) {
     let format = parseFmt(request.query.format?.toString() || "html");
     let render = getRenderer(format, "search", response);
