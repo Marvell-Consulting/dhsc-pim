@@ -53,6 +53,7 @@ export module Controllers {
     let rangeText = "";
     let total = 0;
     let products: PARDProduct[] = [];
+    let sortBy = getSearchSort(request.query.sort?.toString() || "");
 
     if (term.trim().length == 0) {
       let [query, countQuery] = browseQuery();
@@ -73,8 +74,7 @@ export module Controllers {
         limit = 5000;
       }
 
-      let query =
-        "select rank, PRODUCT_ID from search where search match ? order by rank LIMIT ? OFFSET ?;";
+      let query = `select rank, PRODUCT_ID from search where search match ? order by ${sortBy} LIMIT ? OFFSET ?;`;
       let idResults = db.prepare(query).all(qterm, limit, offset);
 
       if (idResults.length > 0) {
@@ -138,7 +138,37 @@ export module Controllers {
       pages: pages,
       csv_download: csv_url,
       excel_download: excel_url,
+      sort: getSortOptions(fullURL),
     });
+  }
+
+  function getSortOptions(url: string): any {
+    let sort_options = {
+      relevant: "",
+      manufacturer_az: "",
+      manufacturer_za: "",
+      name_az: "",
+      name_za: "",
+    };
+
+    let sortURL = new URL(url);
+    sortURL.searchParams.delete("page");
+    sortURL.searchParams.delete("sort");
+    sort_options.relevant = sortURL.toString();
+
+    sortURL.searchParams.set("sort", "manufacturer");
+    sort_options.manufacturer_az = sortURL.toString();
+
+    sortURL.searchParams.set("sort", "-manufacturer");
+    sort_options.manufacturer_za = sortURL.toString();
+
+    sortURL.searchParams.set("sort", "name");
+    sort_options.name_az = sortURL.toString();
+
+    sortURL.searchParams.set("sort", "-name");
+    sort_options.name_za = sortURL.toString();
+
+    return sort_options;
   }
 
   function browseQuery(): [string, string] {
@@ -230,4 +260,26 @@ function clean_boolean(val?: string | undefined): string {
 
 function removePunctuation(text: string): string {
   return text.replace(/[^\w\s]|_/g, "");
+}
+
+const sortLookup = new Map<string, string>([
+  ["manufacturer", "lower(trim(MANUFACTURER))"],
+  ["name", "lower(trim(PRODUCT))"],
+  ["term", "lower(trim(GMDN))"],
+]);
+
+const defaultSort = "rank";
+
+function getSearchSort(sortTerm: string): string {
+  let key = sortTerm;
+  if (sortTerm == "") return defaultSort;
+
+  let direction = "";
+  if (key.charAt(0) == "-") {
+    direction = "DESC";
+    key = key.slice(1);
+  }
+
+  let ordering = sortLookup.get(key) || defaultSort;
+  return `${ordering} ${direction}`;
 }
