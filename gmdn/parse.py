@@ -2,7 +2,9 @@ import xml.sax
 import xml.sax.handler
 import json
 
-class MyHandler(xml.sax.handler.ContentHandler):
+fp = open("gmdnData.json", "w")
+
+class DataHandler(xml.sax.handler.ContentHandler):
     def __init__(self):
         self._buffer = []
         self._record = {}
@@ -14,15 +16,67 @@ class MyHandler(xml.sax.handler.ContentHandler):
 
     def endElement(self, name):
         if name == "term":
-            print(json.dumps(self._record))
+            fp.write(json.dumps(self._record))
+            fp.write("\n")
         else:
             self._record[name] = ''.join(self._buffer)
 
     def characters(self, data):
         self._buffer.append(data)
-    
 
-handler = MyHandler()
+xml.sax.parse("newData/gmdnData24_6.xml", DataHandler())
 
-xml.sax.parse("gmdnData24_4.xml", handler)
+fp.close()
 
+fp = open("gmdnCategory.json", "w")
+
+class CategoryHandler(xml.sax.handler.ContentHandler):
+    def __init__(self):
+        self._buffer = []
+        self._record = {}
+
+    def startElement(self, name, attrs):
+        self._buffer = []
+        if name == "category":
+            self._record = {}
+
+    def endElement(self, name):
+        if name == "category":
+            fp.write(json.dumps(self._record))
+            fp.write("\n")
+        else:
+            self._record[name] = ''.join(self._buffer)
+
+    def characters(self, data):
+        self._buffer.append(data)
+
+xml.sax.parse("newData/gmdn_category_en_20240601.xml", CategoryHandler())
+
+fp.close()
+
+
+fp = open("gmdnCategoryTermLink.json", "w")
+
+class CategoryTermLinkHandler(xml.sax.handler.ContentHandler):
+    def __init__(self):
+        self._buffer = []
+        self._record = {}
+
+    def startElement(self, name, attrs):
+        self._buffer = []
+        if name == "categoryTermLink":
+            self._record = {}
+
+    def endElement(self, name):
+        if name == "categoryTermLink":
+            fp.write(json.dumps(self._record))
+            fp.write("\n")
+        else:
+            self._record[name] = ''.join(self._buffer)
+
+    def characters(self, data):
+        self._buffer.append(data)
+
+xml.sax.parse("newData/gmdn_categoryTermLink_en_20240601.xml", CategoryTermLinkHandler())
+
+fp.close()

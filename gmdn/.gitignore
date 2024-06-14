@@ -1,1 +1,4 @@
 *.sqlite
+*.xml
+*.json
+*.txt
