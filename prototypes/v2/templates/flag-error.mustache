@@ -1,0 +1,55 @@
+{{> layout/header}}
+
+    <main class="govuk-main-wrapper">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <h1 class="govuk-heading-xl">Tell us whats wrong with this data</h1>
+            </div>
+        </div>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <p class="govuk-body">
+                You can find information on medical devices such as:
+                </p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>classification codes, like NHS eClass, Risk class, GMDN, or UDI-DI</li>
+                    <li>the manufacturer's details</li>
+                    <li>medical information, for example unit of issue, single use, or implantable</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+                {{! <h2 class="govuk-heading-m">Search</h2> }}
+                <label class="govuk-label govuk-label--m" for="search">
+                    Search
+                </label>
+                <p class="govuk-hint govuk-body">
+                    Combine search terms to find what you are looking for. For example:
+                </p>
+                <ul class="govuk-list govuk-list--bullet govuk-hint">
+                    <li>implantable left ventricular assist device</li>
+                    <li>33721 Class D </li>
+                    <li>microscope 70126-002 </li>
+                </ul>
+                {{> partial/searchbox }}
+                <p class="govuk-body"><a href="multiple">Search for multiple devices</a></p>
+                <p class="govuk-body"><a href="search">Show the complete list of medical devices</a></p>
+        </div>
+        <div class="govuk-grid-column-one-third">
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+            <h2 class="govuk-heading-m">Download the database</h2>
+            <ul class="govuk-list govuk-list--bullet">
+                <li><a href="#">Download as a CSV</a></li>
+                <li><a href="#">Download as an XLS</a></li>
+                <li><a href="#">Download as XML</a></li>
+                <li><a href="#">API access</a></li>
+            </ul>
+            </div>
+        </div>
+    </main>
+
+{{> layout/footer}}
