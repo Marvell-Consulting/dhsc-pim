@@ -1,0 +1,27 @@
+{{> layout/header}}
+
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form action="flagconfirmation">
+          <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper">
+              <label class="govuk-label govuk-label--l" for="event-name">
+                Your contact email address
+              </label>
+            </h1>
+              <p class="govuk-hint">We need you to provide your email address, so manufacturer can get back in contact with you, should they have any queries about your request.</p>
+            <input class="govuk-input" id="event-name" name="eventName" type="text">
+          </div>
+          <div class="govuk-button-group">
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+              Continue
+            </button>
+            <a class="govuk-link" href="#">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+{{> layout/footer}}
