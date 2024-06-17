@@ -1,13 +1,13 @@
 {{> layout/header}}
 
-<h1>Flag bad data</h1>
+<h1>Report a problem with data</h1>
 
   <main class="govuk-main-wrapper">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-xl">Tell us whats wrong with this data</h1>
-        <p class="govuk-body">[Explanation of the process]</p>
-        <p class="govuk-body">Flag will be requested from the manufacturer, they'll review, update info if incorrect, you'll be notified.</p>
+        <h1 class="govuk-heading-xl">Tell us what is wrong with the data</h1>
+        <p class="govuk-body">Select all of the information that is wrong on the device page. </p>
+        <p class="govuk-body">We will let the manufacturer know what is wrong. The manufacturer will review the data and update it if it is incorrect. We will notify you if the manufacturer updates the page.</p>
         <form action="/flag/{{ ID }}/submitted" method="POST">
           <div class="govuk-form-group">
           <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
