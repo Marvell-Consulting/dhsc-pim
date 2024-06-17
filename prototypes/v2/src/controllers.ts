@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 //import { Config } from "./config";
-import { PARDProduct } from "./models";
+import { PARDProduct, KeyValue } from "./models";
 import { pagination } from "./pagination";
 import { parseFmt, getRenderer, RenderTarget } from "./render";
 
@@ -37,22 +37,6 @@ export module Controllers {
 
   export function comparison(_request: Request, response: Response) {
     getRenderer(RenderTarget.HTML, "comparison", response)({});
-  }
-
-  export function flag(_request: Request, response: Response) {
-    getRenderer(RenderTarget.HTML, "flag", response)({});
-  }
-
-  export function flagsubmitted(_request: Request, response: Response) {
-    getRenderer(RenderTarget.HTML, "flagsubmitted", response)({});
-  }
-
-  export function flagconfirmation(_request: Request, response: Response) {
-    getRenderer(RenderTarget.HTML, "flagconfirmation", response)({});
-  }
-
-  export function request(_request: Request, response: Response) {
-    getRenderer(RenderTarget.HTML, "request", response)({});
   }
 
   export function search(request: Request, response: Response) {
@@ -240,6 +224,7 @@ export module Controllers {
     let csv_url = thisPage.toString();
 
     var obj: { [k: string]: any } = {
+      id: request.params.id,
       back: request.get("Referrer"),
       manufacturer: manufacturer,
       debug: debug,
@@ -256,6 +241,107 @@ export module Controllers {
     }
     render(obj);
   }
+
+  export function flag(request: Request, response: Response) {
+    let render = getRenderer(RenderTarget.HTML, "flag", response);
+
+    let fields = getAllFields(
+      request,
+      request.params.id,
+      (k: string, v: any) => {
+        return v && !k.endsWith("_ID") && v != "NULL";
+      },
+      (_k: string, v: any) => {
+        return v as boolean;
+      },
+    );
+
+    render({
+      ID: request.params.id,
+      FIELDS: fields,
+    });
+  }
+
+  export function flagsubmitted(request: Request, response: Response) {
+    let render = getRenderer(RenderTarget.HTML, "flagsubmitted", response);
+    render({ ID: request.params.id });
+  }
+
+  export function flagconfirmation(request: Request, response: Response) {
+    let render = getRenderer(RenderTarget.HTML, "flagconfirmation", response);
+    render({ ID: request.params.id });
+  }
+
+  export function requestsubmitted(request: Request, response: Response) {
+    let render = getRenderer(RenderTarget.HTML, "requestsubmitted", response);
+    render({ ID: request.params.id });
+  }
+
+  export function requestconfirmation(request: Request, response: Response) {
+    let render = getRenderer(
+      RenderTarget.HTML,
+      "requestconfirmation",
+      response,
+    );
+    render({ ID: request.params.id });
+  }
+
+  export function request(request: Request, response: Response) {
+    let render = getRenderer(RenderTarget.HTML, "request", response);
+
+    let fields = getAllFields(
+      request,
+      request.params.id,
+      (k: string, v: any) => {
+        return (!v || v == "NULL") && !k.endsWith("_ID");
+      },
+      (_k: string, v: any) => {
+        return !(v as boolean);
+      },
+    );
+
+    render({
+      ID: request.params.id,
+      FIELDS: fields,
+    });
+  }
+}
+
+function getAllFields(
+  request: Request,
+  id: string,
+  prod_fnc: (k: string, v: any) => boolean,
+  manuf_fnc: (k: string, v: any) => boolean,
+): KeyValue[] {
+  let query = `SELECT P.*, D.* FROM products AS P INNER JOIN devices as D ON D.DEVICE_ID=P.DEVICE_ID WHERE PRODUCT_ID = ?`;
+  let db = request.app.get("db");
+  let product = db.prepare(query).get(id);
+  let manufacturer = db
+    .prepare(`select * from organisations where MAN_ORGANISATION_ID=?`)
+    .get(product.MANUFACTURER_ID);
+
+  let fields: KeyValue[] = [];
+
+  for (const [key, value] of Object.entries(product)) {
+    if (prod_fnc(key, value)) {
+      fields.push({ key, value: remove_null(value) });
+    }
+  }
+
+  if (manufacturer) {
+    for (const [key, value] of Object.entries(manufacturer)) {
+      if (manuf_fnc(key, value)) {
+        fields.push({ key, value: remove_null(value) });
+      }
+    }
+  }
+
+  return fields;
+}
+
+function remove_null(s: any): string {
+  if (s == "NULL") return "";
+  return s.toString();
 }
 
 function clean_boolean(val?: string | undefined): string {

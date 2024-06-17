@@ -1,12 +1,14 @@
 {{> layout/header}}
 
+<h1>Flag bad data</h1>
+
   <main class="govuk-main-wrapper">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-xl">Tell us whats wrong with this data</h1>
         <p class="govuk-body">[Explanation of the process]</p>
         <p class="govuk-body">Flag will be requested from the manufacturer, they'll review, update info if incorrect, you'll be notified.</p>
-        <form action="flagsubmitted">
+        <form action="/flag/{{ ID }}/submitted">
           <div class="govuk-form-group">
           <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
@@ -14,164 +16,30 @@
             </legend>
             <div id="contact-hint" class="govuk-hint"></div>
 
-              
+
               <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-                
-                {{^ UDI_NUMBER }}  
+
+                {{#FIELDS}}
                   <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="UDI_NUMBER" data-aria-controls="conditional-contact-UDI_NUMBER">
-                    <label class="govuk-label govuk-label--s govuk-checkboxes__label" for="contact">
-                      UDI-DI: 12345 12312 12321
+                    <input class="govuk-checkboxes__input" id="{{key}}" name="{{key}}" type="checkbox" value="{{key}}" data-aria-controls="conditional-contact-{{key}}">
+                    <label class="govuk-label govuk-label--s govuk-checkboxes__label" for="{{key}}">
+                      {{key}}: {{value}}
                     </label>
                   </div>
-                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-UDI_NUMBER">
+                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-{{key}}">
                     <div class="govuk-form-group">
                       <label class="govuk-label govuk-label--s" for="contact-by-email">
                         Describe what's wrong
                       </label>
-                      <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                      <textarea class="govuk-textarea" id="{{key}}-reason" name="{{key}}-reason" rows="5" aria-describedby="more-detail-hint"></textarea>
 
                       <label class="govuk-label govuk-label--s" for="contact-by-email">
                         What should it be? (Optional)
                       </label>
-                      <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                      <textarea class="govuk-textarea" id="{{key}}-more-detail" name="{{key}}-more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
                     </div>
                   </div>
-                {{/ UDI_NUMBER}}
-            
-                {{^ GMDN_CODE }}  
-                  <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="GMDN_CODE" data-aria-controls="conditional-contact-GMDN_CODE">
-                    <label class="govuk-label govuk-label--s govuk-checkboxes__label" for="contact">
-                      GMDN_CODE: {{# GMDN_CODE }} {{ . }} {{/GMDN_CODE}}
-                    </label>
-                  </div>
-                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-GMDN_CODE">
-                    <div class="govuk-form-group">
-                      <label class="govuk-label govuk-label--s" for="contact-by-email">
-                        Describe what's wrong
-                      </label>
-                      <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
-
-                      <label class="govuk-label govuk-label--s" for="contact-by-email">
-                        What should it be? (Optional)
-                      </label>
-                      <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
-                    </div>
-                  </div>
-                {{/ GMDN_CODE}}
-            
-                {{^ DEVICE_RISK_SUB_TYPE_DESC }}  
-                  <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="DEVICE_RISK_SUB_TYPE_DESC" data-aria-controls="conditional-contact-DEVICE_RISK_SUB_TYPE_DESC">
-                    <label class="govuk-label govuk-label--s govuk-checkboxes__label" for="contact">
-                      DEVICE_RISK_SUB_TYPE_DESC: {{# DEVICE_RISK_SUB_TYPE_DESC }} {{ . }} {{/DEVICE_RISK_SUB_TYPE_DESC}}
-                    </label>
-                  </div>
-                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-DEVICE_RISK_SUB_TYPE_DESC">
-                    <div class="govuk-form-group">
-                      <label class="govuk-label govuk-label--s" for="contact-by-email">
-                        Describe what's wrong
-                      </label>
-                      <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
-
-                      <label class="govuk-label govuk-label--s" for="contact-by-email">
-                        What should it be? (Optional)
-                      </label>
-                      <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
-                    </div>
-                  </div>
-                {{/ DEVICE_RISK_SUB_TYPE_DESC}}
-
-                {{^ PRODUCT_CODE }}  
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="PRODUCT_CODE" data-aria-controls="conditional-contact-PRODUCT_CODE">
-                  <label class="govuk-label govuk-label--s govuk-checkboxes__label" for="contact">
-                    PRODUCT_CODE: {{# PRODUCT_CODE }} {{ . }} {{/PRODUCT_CODE}}
-                  </label>
-                </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-PRODUCT_CODE">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s" for="contact-by-email">
-                      Describe what's wrong
-                    </label>
-                    <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
-
-                    <label class="govuk-label govuk-label--s" for="contact-by-email">
-                      Describe what's wrong
-                    </label>
-                    <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
-                  </div>
-                </div>
-                {{/ PRODUCT_CODE}}
-            
-                {{^ MODEL }}
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="MODEL" data-aria-controls="conditional-contact-MODEL">
-                  <label class="govuk-label govuk-label--s govuk-checkboxes__label" for="contact">
-                    MODEL: {{# MODEL }} {{ . }} {{/MODEL}}
-                  </label>
-                </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-MODEL">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s" for="contact-by-email">
-                      Describe what's wrong
-                    </label>
-                    <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
-
-                    <label class="govuk-label govuk-label--s" for="contact-by-email">
-                      Describe what's wrong
-                    </label>
-                    <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
-                  </div>
-                </div>
-                {{/ MODEL }}
-            
-                {{^ MANUFACTURER_NAME }}  
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="MANUFACTURER_NAME" data-aria-controls="conditional-contact-MANUFACTURER_NAME">
-                  <label class="govuk-label govuk-label--s govuk-checkboxes__label" for="contact">
-                    MANUFACTURER_NAME: {{# MANUFACTURER_NAME }} {{ . }} {{/MANUFACTURER_NAME}}
-                  </label>
-                </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-MANUFACTURER_NAME">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s" for="contact-by-email">
-                      Describe what's wrong
-                    </label>
-                    <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
-
-                    <label class="govuk-label govuk-label--s" for="contact-by-email">
-                      Describe what's wrong
-                    </label>
-                    <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
-                  </div>
-                </div>
-                {{/ MANUFACTURER_NAME}}
-            
-                {{^ REP_NAME }}  
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="REP_NAME" data-aria-controls="conditional-contact-REP_NAME">
-                  <label class="govuk-label govuk-label--s govuk-checkboxes__label" for="contact">
-                    REP_NAME: {{# REP_NAME }} {{ . }} {{/REP_NAME}}
-                  </label>
-                </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-REP_NAME">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s" for="contact-by-email">
-                      Describe what's wrong
-                    </label>
-                    <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
-
-                    <label class="govuk-label govuk-label--s" for="contact-by-email">
-                      Describe what's wrong
-                    </label>
-                    <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
-                  </div>
-                </div>
-                {{/ REP_NAME}}
-    
-
+                {{/FIELDS}}
 
               </div>
             </fieldset>
@@ -180,7 +48,7 @@
             <button type="submit" class="govuk-button" data-module="govuk-button">
               Continue
             </button>
-            <a class="govuk-link" href="#">Cancel</a>
+            <a class="govuk-link" href="/">Cancel</a>
           </div>
         </form>
       </div>

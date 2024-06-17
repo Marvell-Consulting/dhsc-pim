@@ -1,3 +1,8 @@
+export class KeyValue {
+  key: string = "";
+  value: any = "";
+}
+
 export class Organisation {
   MAN_ORGANISATION_ID: string = "";
   MAN_ACCOUNT_NUMBER: string = "";
