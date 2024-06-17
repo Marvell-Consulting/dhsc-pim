@@ -58,6 +58,10 @@ app.get("/paq2", Controllers.paq2);
 app.get("/multiple", Controllers.multiple);
 app.get("/multipleresults", Controllers.multipleresults);
 app.get("/comparison", Controllers.comparison);
+app.get("/flag", Controllers.flag);
+app.get("/flagsubmitted", Controllers.flagsubmitted);
+app.get("/flagconfirmation", Controllers.flagconfirmation);
+app.get("/request", Controllers.request);
 
 app.use(express.static("static"));
 

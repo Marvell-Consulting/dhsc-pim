@@ -39,6 +39,22 @@ export module Controllers {
     getRenderer(RenderTarget.HTML, "comparison", response)({});
   }
 
+  export function flag(_request: Request, response: Response) {
+    getRenderer(RenderTarget.HTML, "flag", response)({});
+  }
+
+  export function flagsubmitted(_request: Request, response: Response) {
+    getRenderer(RenderTarget.HTML, "flagsubmitted", response)({});
+  }
+
+  export function flagconfirmation(_request: Request, response: Response) {
+    getRenderer(RenderTarget.HTML, "flagconfirmation", response)({});
+  }
+
+  export function request(_request: Request, response: Response) {
+    getRenderer(RenderTarget.HTML, "request", response)({});
+  }
+
   export function search(request: Request, response: Response) {
     let format = parseFmt(request.query.format?.toString() || "html");
     let render = getRenderer(format, "search", response);
