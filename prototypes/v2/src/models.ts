@@ -1,5 +1,6 @@
 export class KeyValue {
   key: string = "";
+  title: string = "";
   value: any = "";
 }
 
@@ -150,3 +151,39 @@ export class PARDProduct {
   MAXIMUM_NUMBER_REUSE: string = "";
   MAN_ORGANISATION_NAME: string = "";
 }
+
+export const NameMap = new Map<string, string>([
+  ["MANUFACTURER_NAME", "Manufacturer name"],
+  ["GMDN_CODE", "GMDN code"],
+  ["GMDN_TERM_NAME", "GMDN name"],
+  ["BRAND_TRADE_NAME", "Brand name"],
+  ["MODEL", "Model"],
+  ["PRODUCT_CODE", "Manufacturer product code (MPC)"],
+  ["NOTIFIED_BODY_NAME", "Notified Body"],
+  ["IS_STERILE", "Sterile"],
+  ["UDI_NUMBER", "UDI-DI"],
+  ["UNIT_OF_USE_UDI_DI", "Unit of issue"],
+  ["IS_CONTAINING_LATEX", "Contains latex"],
+  ["COMPANY_REGISTRATION_NUMBER", "Companies house registration number"],
+  ["MAN_ADDR_LINE_1", "Manufacturer address"],
+  ["MAN_ADDR_LINE_2", "Manufacturer address (second line)"],
+  ["MAN_ADDR_LINE_3", "Manufacturer address (third line)"],
+  ["MAN_ADDR_LINE_4", "Manufacturer address (fourth line)"],
+  ["MAN_CITY", "Manufacturer address (city)"],
+  ["MAN_STATE", "Manufacturer address (state)"],
+  ["MAN_COUNTYSTATEPROVINCE", "Manufacturer address (county/province)"],
+  ["MAN_POSTCODE", "Manufacturer address (Postcode)"],
+  ["MAN_COUNTRY", "Manufacturer address (Country)"],
+  ["REP_NAME", "Supplier"],
+  ["DEVICE_RISK_SUB_TYPE_DESC", "Risk class"],
+  ["IS_CUSTOM_MADE", "Custom made"],
+  ["IS_STERILE", "Sterile"],
+  ["NOTIFIED_BODY_NAME", "Notified Body"],
+  ["SINGLE_USE_DEVICE", "Single use"],
+  [
+    "IS_PERFORMANCE_STUDIES",
+    "In-Vitro Diagnostic Medical Device for ‘Performance Evaluation’",
+  ],
+  ["DEVICE_IMPLANTABLE", "Implantable"],
+  ["MAXIMUM_NUMBER_REUSE", "Limit of device reprocessing cycles"],
+]);

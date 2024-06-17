@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 //import { Config } from "./config";
-import { PARDProduct, KeyValue } from "./models";
+import { PARDProduct, KeyValue, NameMap } from "./models";
 import { pagination } from "./pagination";
 import { parseFmt, getRenderer, RenderTarget } from "./render";
 
@@ -323,15 +323,21 @@ function getAllFields(
   let fields: KeyValue[] = [];
 
   for (const [key, value] of Object.entries(product)) {
+    let title: string = NameMap.get(key) || "";
+    if (title == "") continue;
+
     if (prod_fnc(key, value)) {
-      fields.push({ key, value: remove_null(value) });
+      fields.push({ key, title, value: remove_null(value) });
     }
   }
 
   if (manufacturer) {
     for (const [key, value] of Object.entries(manufacturer)) {
+      let title: string = NameMap.get(key) || "";
+      if (title == "") continue;
+
       if (manuf_fnc(key, value)) {
-        fields.push({ key, value: remove_null(value) });
+        fields.push({ key, title, value: remove_null(value) });
       }
     }
   }
