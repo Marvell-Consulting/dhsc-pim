@@ -1,18 +1,14 @@
 {{> layout/header}}
-
-<h1>Request missing data</h1>
-
   <main class="govuk-main-wrapper">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-xl">Tell us whats wrong with this data</h1>
-        <p class="govuk-body">[Explanation of the process]</p>
-        <p class="govuk-body">Flag will be requested from the manufacturer, they'll review, update info if incorrect, you'll be notified.</p>
+        <h1 class="govuk-heading-xl">What data would you like to request</h1>
+        <p class="govuk-body">Your request will be sent to the manufacturer, they'll review, update info if incorrect, you'll be notified.</p>
         <form action="/request/{{ ID }}/submitted" method="POST">
           <div class="govuk-form-group">
           <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              <h1 class="govuk-fieldset__heading">What information is wrong?</h1>
+              <h1 class="govuk-fieldset__heading">What information do you require?</h1>
             </legend>
             <div id="contact-hint" class="govuk-hint"></div>
 
@@ -20,26 +16,32 @@
 
                 {{#FIELDS}}
                   <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="{{key}}" name="{{key}}" type="checkbox" value="{{key}}" data-aria-controls="conditional-contact-{{key}}">
+                    <input class="govuk-checkboxes__input" id="{{key}}" name="{{key}}" type="checkbox" value="{{key}}">
                     <label class="govuk-label govuk-label--s govuk-checkboxes__label" for="{{key}}">
                       {{title}}
                     </label>
                   </div>
-                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-{{key}}">
+                {{/FIELDS}}
+                  <div class="govuk-checkboxes__divider">or</div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="other" name="other" type="checkbox" value="other" data-aria-controls="conditional-contact-other">
+                    <label class="govuk-label govuk-label--s govuk-checkboxes__label" for="other">
+                      Something else
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-other">
                     <div class="govuk-form-group">
                       <label class="govuk-label govuk-label--s" for="contact-by-email">
-                        Describe what's wrong
+                        What data would you like to request?
                       </label>
-                      <textarea class="govuk-textarea" id="{{key}}-reason" name="{{key}}-reason" rows="5" aria-describedby="more-detail-hint"></textarea>
+                      <textarea class="govuk-textarea" id="other-reason" name="other-reason" rows="5" aria-describedby="more-detail-hint"></textarea>
 
                       <label class="govuk-label govuk-label--s" for="contact-by-email">
-                        What should it be? (Optional)
+                        Add a comment
                       </label>
-                      <textarea class="govuk-textarea" id="{{key}}-more-detail" name="{{key}}-more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                      <textarea class="govuk-textarea" id="other-more-detail" name="other-more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
                     </div>
                   </div>
-                {{/FIELDS}}
-
               </div>
             </fieldset>
           </div>
