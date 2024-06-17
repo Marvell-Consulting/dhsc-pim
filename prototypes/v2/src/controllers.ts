@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 //import { Config } from "./config";
-import { PARDProduct, KeyValue, NameMap } from "./models";
+import { PARDProduct, KeyValue, NameMap, PAQMap } from "./models";
 import { pagination } from "./pagination";
 import { parseFmt, getRenderer, RenderTarget } from "./render";
 
@@ -299,6 +299,14 @@ export module Controllers {
         return !(v as boolean);
       },
     );
+
+    PAQMap.forEach((title: string, key: string) => {
+      fields.push({
+        key,
+        title,
+        value: "",
+      });
+    });
 
     render({
       ID: request.params.id,
