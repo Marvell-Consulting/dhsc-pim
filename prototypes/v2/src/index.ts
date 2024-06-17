@@ -58,11 +58,11 @@ app.get("/paq2", Controllers.paq2);
 app.get("/multiple", Controllers.multiple);
 app.get("/multipleresults", Controllers.multipleresults);
 app.get("/comparison", Controllers.comparison);
-app.get("/flag/:id/submitted", Controllers.flagsubmitted);
-app.get("/flag/:id/confirmed", Controllers.flagconfirmation);
+app.post("/flag/:id/submitted", Controllers.flagsubmitted);
+app.post("/flag/:id/confirmed", Controllers.flagconfirmation);
 app.get("/flag/:id", Controllers.flag);
-app.get("/request/:id/submitted", Controllers.requestsubmitted);
-app.get("/request/:id/confirmed", Controllers.requestconfirmation);
+app.post("/request/:id/submitted", Controllers.requestsubmitted);
+app.post("/request/:id/confirmed", Controllers.requestconfirmation);
 app.get("/request/:id", Controllers.request);
 
 app.use(express.static("static"));
