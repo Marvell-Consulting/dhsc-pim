@@ -60,7 +60,8 @@ export module Controllers {
       products = db.prepare(query).all(limit, offset);
       total = db.prepare(countQuery).get().total;
     } else {
-      let qterm = removePunctuation(term);
+      let qterm = quoteSearchTerm(term);
+      console.log(qterm);
 
       let countQuery =
         "select count(PRODUCT_ID) as total from search where search match ?";
@@ -374,8 +375,14 @@ function clean_boolean(val?: string | undefined): string {
   return val;
 }
 
-function removePunctuation(text: string): string {
-  return text.replace(/[^\w\s]|_/g, "");
+function quoteSearchTerm(text: string): string {
+  let parts = text.split(/[\s,]+/);
+  return parts
+    .map((s: string): string => {
+      if (!!s.match(/[@#$%^&.,:?-_]/)) return '"' + s + '"';
+      return s;
+    })
+    .join(" ");
 }
 
 const sortLookup = new Map<string, string>([
