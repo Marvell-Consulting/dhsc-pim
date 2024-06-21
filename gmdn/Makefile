@@ -1,6 +1,6 @@
 all: gmdn.sqlite
 
-gmdnData.json gmdnCategory.json gmdnCategoryTermLink.json: newData/gmdnData24_6.xml newData/gmdn_category_en_20240601.xml newData/gmdn_categoryTermLink_en_20240601.xml parse.py
+gmdnData.json gmdnCategory.json gmdnCategoryTermLink.json: gmdnData24_6.xml gmdn_category_en_20240601.xml gmdn_categoryTermLink_en_20240601.xml parse.py
 	python parse.py
 
 gmdn.sqlite: schema.sql gmdnData.json gmdnCategory.json gmdnCategoryTermLink.json find-parents.sql find-leaves.sql find-toplevel.sql

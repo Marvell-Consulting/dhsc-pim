@@ -24,7 +24,7 @@ class DataHandler(xml.sax.handler.ContentHandler):
     def characters(self, data):
         self._buffer.append(data)
 
-xml.sax.parse("newData/gmdnData24_6.xml", DataHandler())
+xml.sax.parse("gmdnData24_6.xml", DataHandler())
 
 fp.close()
 
@@ -50,7 +50,7 @@ class CategoryHandler(xml.sax.handler.ContentHandler):
     def characters(self, data):
         self._buffer.append(data)
 
-xml.sax.parse("newData/gmdn_category_en_20240601.xml", CategoryHandler())
+xml.sax.parse("gmdn_category_en_20240601.xml", CategoryHandler())
 
 fp.close()
 
@@ -77,6 +77,6 @@ class CategoryTermLinkHandler(xml.sax.handler.ContentHandler):
     def characters(self, data):
         self._buffer.append(data)
 
-xml.sax.parse("newData/gmdn_categoryTermLink_en_20240601.xml", CategoryTermLinkHandler())
+xml.sax.parse("gmdn_categoryTermLink_en_20240601.xml", CategoryTermLinkHandler())
 
 fp.close()
