@@ -24,15 +24,12 @@ deepclean: clean
 
 ## Install chicken-scheme then run "chicken-install magic-pipes" to get the mp* tools
 
-mhra.sqlite: read-products-2.sh schema.sql import-gmdn.sql import-gudid.sql materialise-gudid-join.sql $(basedata)
+mhra.sqlite: read-products-2.sh schema.sql $(basedata)
 	rm mhra.sqlite || true
 	sqlite3 mhra.sqlite < schema.sql
-	sqlite3 mhra.sqlite < import-gmdn.sql
-	sqlite3 mhra.sqlite < import-gudid.sql
 	./read-products-2.sh | mpcsv-read -T | mpfilter '(lambda (x) (= (length x) 40))' | mptable2alist -H | mpsqlite --mode=insert mhra.sqlite products > /dev/null
 	cat DeviceRegistration_Organisation_20240330.txt | sed 's_"MEDICARE-Trade" _\\"MEDICARE-Trade\\" _' | sed 's_"The Works" Preston House_\\"The Works\\" Preston House_' | sed 's_"Viktoria Mews 27 _\\"Viktoria Mews 27 _' | mpcsv-read -T | mptable2alist -H | mpsqlite --mode=insert mhra.sqlite organisations > /dev/null
 	mpcsv-read -T < DeviceRegistration_Devices_20240330.txt  | mptable2alist -H | mpsqlite --mode=insert mhra.sqlite devices > /dev/null
-	sqlite3 mhra.sqlite < materialise-gudid-join.sql
 
 # Data cleanup
 
