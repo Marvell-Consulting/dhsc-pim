@@ -8,3 +8,16 @@ CREATE TABLE gmdn_term (
        modifiedDate string,
        obsoletedDate string
 );
+
+CREATE TABLE gmdn_category (
+       nodeID string,
+       categoryCode string,
+       path string,
+       name string,
+       definition string
+);
+
+CREATE TABLE gmdn_category_term_link (
+       categoryCode string,
+       termCode string
+);
