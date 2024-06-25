@@ -1,4 +1,4 @@
-CREATE TEMPORARY VIEW devices_products AS SELECT * FROM devices, products WHERE products."Device ID" = devices.DEVICE_ID;
+CREATE TEMPORARY VIEW devices_products AS SELECT * FROM mhra_devices, mhra_products WHERE mhra_products."Device ID" = mhra_devices.DEVICE_ID;
 
 -- How many full MHRA records (devices with a device and one or more product record) do we have?
 
@@ -75,8 +75,8 @@ WHERE gudidDevice.companyName IS NOT NULL
   AND gudidDevice.companyName <> '';
 
 SELECT COUNT(DISTINCT devices_products.DEVICE_ID) -- 99,580
-FROM devices_products LEFT OUTER JOIN organisations ON devices_products.MAN_ORGANISATION_ID = organisations.MAN_ORGANISATION_ID
-WHERE organisations.MAN_ORGANISATION_NAME IS NOT NULL AND organisations.MAN_ORGANISATION_NAME <> '';
+FROM devices_products LEFT OUTER JOIN mhra_organisations ON devices_products.MAN_ORGANISATION_ID = mhra_organisations.MAN_ORGANISATION_ID
+WHERE mhra_organisations.MAN_ORGANISATION_NAME IS NOT NULL AND mhra_organisations.MAN_ORGANISATION_NAME <> '';
 
 -- gudidDevice.singleUse: 10,995 MHRA records (all matches)
 
@@ -108,7 +108,7 @@ FROM devices_products LEFT OUTER JOIN gudid_join ON devices_products.DEVICE_ID =
 WHERE (gudidContacts.phone IS NOT NULL AND gudidContacts.phone <> '') OR (gudidContacts.email IS NOT NULL AND gudidContacts.email <> '');
 
 SELECT COUNT(DISTINCT devices_products.DEVICE_ID) -- 99572
-FROM devices_products LEFT OUTER JOIN organisations ON devices_products.MAN_ORGANISATION_ID = organisations.MAN_ORGANISATION_ID
-WHERE organisations.MAN_ADDR_LINE_1 IS NOT NULL AND organisations.MAN_ADDR_LINE_1 <> '';
+FROM devices_products LEFT OUTER JOIN mhra_organisations ON devices_products.MAN_ORGANISATION_ID = mhra_organisations.MAN_ORGANISATION_ID
+WHERE mhra_organisations.MAN_ADDR_LINE_1 IS NOT NULL AND mhra_organisations.MAN_ADDR_LINE_1 <> '';
 
 -- Website - what field?
