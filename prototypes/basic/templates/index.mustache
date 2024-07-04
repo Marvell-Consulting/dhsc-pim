@@ -8,27 +8,83 @@
         </div>
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                <p class="govuk-body">
-                  Round 2 prototype testing: Data consumers
-                </p>
-                <ul class="govuk-list govuk-list--bullet">
-                  <li><a href="https://pim-proto2.fly.dev/home">Homepage</a></li>
-                  <li><a href="https://pim-proto2.fly.dev/search?search=test">Search results</a></li>
-                  <li><a href="https://pim-proto2.fly.dev/product/314054">Example of a product page</a></li>
-                  <li><a href="https://pim-proto2.fly.dev/multiple">Searching for multiple products at once</a></li>
-                </ul>
+                <h2 class="govuk-heading-m">Data consumer user testing</h2>
+                
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                
+                <h3 class="govuk-heading-s">
+                  Round 3 prototype testing: Data consumers
+                </h3>
+                <p class="govuk-body">Summary: Data consumers can search for and view medical device details. They can also request missing data and flag data that seems to be incorrect.</p>
+                <p class="govuk-body"><a href="https://pim-proto2.fly.dev/home">View round 3 prototype</a></p>
+                <details class="govuk-details">
+                  <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                      Key iterations
+                    </span>
+                  </summary>
+                  <div class="govuk-details__text">
+                    <p class="govuk-body">Key iterations from round 2:</p>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>Removed CSV/XLS download options from home page</li>
+                      <li>Added GMDN codes/terms to searchable categories</li>
+                      <li>Included product descriptions in search result summaries</li>
+                      <li>Included sorting of results on search results</li>
+                      <li>Updating filters – creating, reorganising new filters, and iterating existing </li>
+                      <li>Explored 'requesting missing data' workflow</li>
+                      <li>Explored 'wrong data' workflow</li>
+                      <li>Added definition of medical device to homepage</li>
+                      <li>Reorganised content on device pages – inc. placing downloads within context and reorganising topics</li>
+                    </ul>
+                  </div>
+                </details>
 
                 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
-                <p class="govuk-body">
+                <h3 class="govuk-heading-s">
+                  Round 2 prototype testing: Data consumers
+                </h3>
+                <p class="govuk-body">Summary: Data consumers can search for and view medical device details. Users can also choose to search for multiple devices simultaneously. Data used includes additional data points from the NHS's Pre-Acquisition Questionaire (PAQ).</p>
+                <p class="govuk-body"><a href="https://pim-proto1.fly.dev/home">View round 2 prototype</a></p>
+                <details class="govuk-details">
+                  <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                      Key iterations
+                    </span>
+                  </summary>
+                  <div class="govuk-details__text">
+                    <p class="govuk-body">Key iterations from round 1:</p>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>created a dynamic version of the prototype with functioning search</li>
+                      <li>added all the fields in the PAQ form to the universal standardised data fields in the prototype</li>
+                      <li>improved categorisations of data points on product pages</li>
+                      <li>added an additional 80 structured data fields to only wound care devices</li>
+                      <li>added workflow for searching multiple devices simultaneously</li>
+                  </div>
+                </details>
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+                <h3 class="govuk-heading-s">
                   Round 1 prototype testing: Data consumers
-                </p>
+                </h3>
+                <p class="govuk-body">Summary: Wireframe designs of a home page, search results and product page. Data used includes the origninal 13 data points from discovery.</p>
+                <p class="govuk-body"><a href="/assets/images/pim-round-1-wireframes.pdf">View wireframes of proposed pages</a> (opens a .pdf file)</p>
+
+                <hr class="govuk-section-break govuk-section-break--l">
+
+                <h2 class="govuk-heading-m">Data publisher user testing</h2>
+
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                
+                <h3 class="govuk-heading-s">
+                  Round 3 prototype testing: Data consumers
+                </h3>
+                <p class="govuk-body">Summary: Wireframes of a series of concepts for how manufacturers could keep their product data updated in PIM. Journeys include:</p>
                 <ul class="govuk-list govuk-list--bullet">
-                  <li><a href="https://pim-proto1.fly.dev/home">Homepage</a></li>
-                  <li><a href="https://pim-proto1.fly.dev/search?search=test">Search results</a></li>
-                  <li><a href="https://pim-proto1.fly.dev/product/314054">Example of a product page</a></li>
-                  <li><a href="https://pim-proto1.fly.dev/multiple">Searching for multiple products at once</a></li>
+                  <li>Manufactures proactiviley updating their data via an APIs, webfroms, spreadsheet uploads or uploading PAQ forms</li>
+                  <li>NHS users requsting manufactures update or correct their data on an ad hoc basis</li>
                 </ul>
+                <p class="govuk-body"><a href="/assets/images/pim-dp-round-1-concepts.pdf">View wireframes of proposed workflows</a> (opens a .pdf file)</p>
             </div>
         </div>
     </main>
