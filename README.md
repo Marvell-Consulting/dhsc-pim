@@ -53,6 +53,12 @@ chicken-install magic-pipes
 All the importers use makefiles, so you can generate the data by running `make`
 in the appropriate directory.
 
-The mhra importer also incorporates the gmdn and gudid data, so the gmdn and gudid importers must have been run before you run `make` in the mhra directory.
+### Merging the databases
+
+The merged-data directory contains a Makefile to merge the GMDN, MHRA and GUDID data into a single .sqlite database.
+
+The mhra, gmdn and gudid importers must have been run before you run `make` in the merged-data directory.
+
+### Source data
 
 Note that the gmdn, gudid, and mhra importers require a copy of the data to be obtained - which is not included in this repository. The pard importer pulls data from a public API.

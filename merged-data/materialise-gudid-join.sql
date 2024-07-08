@@ -3,7 +3,7 @@
 -- Find the same device in gudid and mhra devices data (by matching UDIs)
 
 create temporary table device_products as
-select * from devices LEFT OUTER JOIN products ON devices.DEVICE_ID = products."Device ID";
+select * from mhra_devices LEFT OUTER JOIN mhra_products ON mhra_devices.DEVICE_ID = mhra_products."Device ID";
 create index devices_DEV_UDI_ENTITY_CODE on device_products(DEV_UDI_ENTITY_CODE);
 create index devices_DEV_UDI_NUMBERS on device_products(DEV_UDI_NUMBERS);
 create index products_Udi_Entity_Code on device_products("Udi Entity Code");
