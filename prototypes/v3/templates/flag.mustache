@@ -1,0 +1,56 @@
+{{> layout/header}}
+
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Tell us what is wrong with the data</h1>
+        <p class="govuk-body">Select all of the information that is wrong on the product page. </p>
+        <p class="govuk-body">We will let the manufacturer know what is wrong. The manufacturer will review the data and update it if it is incorrect. We will notify you if the manufacturer updates the page.</p>
+        <form action="/flag/{{ ID }}/submitted" method="POST">
+          <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h1 class="govuk-fieldset__heading">What information is wrong?</h1>
+            </legend>
+            <div id="contact-hint" class="govuk-hint"></div>
+
+
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+
+                {{#FIELDS}}
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="{{key}}" name="{{key}}" type="checkbox" value="{{key}}" data-aria-controls="conditional-contact-{{key}}">
+                    <label class="govuk-label govuk-label--s govuk-checkboxes__label" for="{{key}}">
+                      {{title}}: {{value}}
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-{{key}}">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-label--s" for="contact-by-email">
+                        Describe what's wrong
+                      </label>
+                      <textarea class="govuk-textarea" id="{{key}}-reason" name="{{key}}-reason" rows="5" aria-describedby="more-detail-hint"></textarea>
+
+                      <label class="govuk-label govuk-label--s" for="contact-by-email">
+                        What should it be? (Optional)
+                      </label>
+                      <textarea class="govuk-textarea" id="{{key}}-more-detail" name="{{key}}-more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                    </div>
+                  </div>
+                {{/FIELDS}}
+
+              </div>
+            </fieldset>
+          </div>
+          <div class="govuk-button-group">
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+              Continue
+            </button>
+            <a class="govuk-link" href="/product/{{ID}}">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+{{> layout/footer}}

@@ -1,0 +1,37 @@
+{{> layout/header}}
+
+{{#back}}
+    <a href="{{back}}" class="govuk-back-link">Back</a>
+{{/back}}
+
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        {{# debug }}
+            {{> partial/debug }}
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        {{/ debug }}
+
+        {{^product }}
+            Product not found
+        {{/ product}}
+
+        {{# product }}
+            {{> partial/product }}
+        {{/product}}
+
+      </div>
+      <div class="govuk-grid-column-one-third">
+
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+        {{> partial/download}}
+        
+        {{> partial/correct}}
+
+      </div>
+    </div>
+  </main>
+
+{{> layout/footer}}

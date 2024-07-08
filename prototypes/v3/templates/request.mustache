@@ -1,0 +1,102 @@
+{{> layout/header}}
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Ask for missing data</h1>
+        <p class="govuk-body">Select all of the missing data you want. Your request will be sent to the manufacturer and you will be notified when it is added.</p>
+        <form action="/request/{{ ID }}/submitted" method="POST">
+          <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h1 class="govuk-fieldset__heading">What data do you need?</h1>
+            </legend>
+            <div id="contact-hint" class="govuk-hint"></div>
+
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+
+                {{#FIELDS}}
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="{{key}}" name="{{key}}" type="checkbox" value="{{key}}">
+                    <label class="govuk-label govuk-label--s govuk-checkboxes__label" for="{{key}}">
+                      {{title}}
+                    </label>
+                  </div>
+                {{/FIELDS}}
+                  <div class="govuk-checkboxes__divider">or</div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="other" name="other" type="checkbox" value="other" data-aria-controls="conditional-contact-other">
+                    <label class="govuk-label govuk-label--s govuk-checkboxes__label" for="other">
+                      Something else
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-other">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-label--s" for="contact-by-email">
+                        What additional data do you need?
+                      </label>
+                      <input class="govuk-input" id="event-name" name="eventName" type="text">
+                    </div>
+                    <div class="govuk-form-group">
+                      <fieldset class="govuk-fieldset">
+                        <label class="govuk-label govuk-label--s" for="contact-by-email">
+                          What format would you like the answer in?
+                        </label>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="whereDoYouLive" name="whereDoYouLive" type="radio" value="yesno">
+                            <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+                              Yes or no
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="whereDoYouLive" name="whereDoYouLive" type="radio" value="england">
+                            <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+                              Text
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="whereDoYouLive-2" name="whereDoYouLive" type="radio" value="scotland">
+                            <label class="govuk-label govuk-radios__label" for="whereDoYouLive-2">
+                              Number
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="whereDoYouLive-3" name="whereDoYouLive" type="radio" value="wales">
+                            <label class="govuk-label govuk-radios__label" for="whereDoYouLive-3">
+                              Date
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="whereDoYouLive-4" name="whereDoYouLive" type="radio" value="northern-ireland">
+                            <label class="govuk-label govuk-radios__label" for="whereDoYouLive-4">
+                              Document upload
+                            </label>
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-label--s" for="contact-by-email">
+                        Add a comment
+                      </label>
+                      <textarea class="govuk-textarea" id="other-more-detail" name="other-more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+
+                      <p class="govuk-button govuk-button--secondary">Request another attribute</p>
+
+                    </div>
+                  </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="govuk-button-group">
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+              Continue
+            </button>
+            <a class="govuk-link" href="/product/{{ID}}">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+{{> layout/footer}}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <title>Example - GOV.UK</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link rel="manifest" href="/assets/manifest.json">
+    <link rel="stylesheet" href="/stylesheets/govuk-frontend-5.3.1.min.css">
+    <link rel="stylesheet" href="/stylesheets/prototype.css">
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+  </head>
+  <body class="govuk-template__body">
+  <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+ <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+  <header class="govuk-header mhra-header" data-module="govuk-header">
+    <div class="govuk-header__container govuk-width-container">
+      {{! <div class="govuk-header__logo">
+        <a href="/" class="govuk-header__link govuk-header__link--homepage">
+          <img src="https://pard.mhra.gov.uk/MHRA-logo.png" height="100px" width="100px">
+        </a>
+      </div> }}
+      <a href="/home" style="color:#FFFFFF">PIM Prototype</a>
+    </div>
+  </header>
+
+  <div class="govuk-width-container" id="main-content">
+    <div class="govuk-phase-banner">
+      <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">
+          Alpha
+        </strong>
+        <span class="govuk-phase-banner__text">
+          This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+        </span>
+      </p>
+    </div>

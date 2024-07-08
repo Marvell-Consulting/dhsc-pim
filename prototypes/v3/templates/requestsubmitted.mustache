@@ -1,0 +1,27 @@
+{{> layout/header}}
+
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form action="/request/{{ ID }}/confirmed" method="POST">
+          <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper">
+              <label class="govuk-label govuk-label--l" for="event-name">
+                Your contact email address
+              </label>
+            </h1>
+              <p class="govuk-hint">Enter your email address so that we can let you know when the manufacturer adds the data.</p>
+            <input class="govuk-input" id="event-name" name="eventName" type="text">
+          </div>
+          <div class="govuk-button-group">
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+              Continue
+            </button>
+            <a class="govuk-link" href="/product/{{ID}}">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+{{> layout/footer}}
