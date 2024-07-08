@@ -31,6 +31,10 @@ mhra.sqlite: read-products-2.sh schema.sql $(basedata)
 	cat DeviceRegistration_Organisation_20240330.txt | sed 's_"MEDICARE-Trade" _\\"MEDICARE-Trade\\" _' | sed 's_"The Works" Preston House_\\"The Works\\" Preston House_' | sed 's_"Viktoria Mews 27 _\\"Viktoria Mews 27 _' | mpcsv-read -T | mptable2alist -H | mpsqlite --mode=insert mhra.sqlite organisations > /dev/null
 	mpcsv-read -T < DeviceRegistration_Devices_20240330.txt  | mptable2alist -H | mpsqlite --mode=insert mhra.sqlite devices > /dev/null
 
+.PHONY: searchable
+searchable:
+	sqlite3 mhra.sqlite < create_search.sql
+
 # Data cleanup
 
 .PHONY: rename_products
