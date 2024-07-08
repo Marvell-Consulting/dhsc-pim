@@ -1,0 +1,64 @@
+{{> layout/header}}
+
+    <main class="govuk-main-wrapper">
+        <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <h1 class="govuk-heading-xl">Find a medical device</h1>
+    </div>
+</div>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body">
+            You can find information on medical devices such as:
+        </p>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>classification codes, like NHS eClass, Risk class, Global Medical Device Nomenclature (GMDN), or Unique Device Identifier (UDI-DI)</li>
+            <li>the manufacturer's details</li>
+            <li>medical information, for example unit of issue, single use, or implantable</li>
+        </ul>
+        <h2 class="govuk-heading-m">What a medical device is</h2>
+        <p class="govuk-body">
+            A medical device can be:
+        </p>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>apparatus, for example an MRI machine or blood pressure monitor</li>
+            <li>software, such as electronic health records or medical imaging software</li>
+            <li>appliances, such as crutches or wheelchairs</li>
+            <li>instruments, like a scalpel or forceps</li>
+            <li>materials, such as solutions or plasters</li>
+        </ul>
+    </div>
+</div>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+                {{! <h2 class="govuk-heading-m">Search</h2> }}
+                <label class="govuk-label govuk-label--m" for="search">
+                    Search
+                </label>
+                <p class="govuk-hint govuk-body">
+                    Combine search terms to find what you are looking for. For example:
+                </p>
+                <ul class="govuk-list govuk-list--bullet govuk-hint">
+                    <li>implantable left ventricular assist device</li>
+                    <li>using GMDN codes </li>
+                    <li>searching for manufacturers by name</li>
+                </ul>
+                {{> partial/searchbox }}
+                <p class="govuk-body"><a href="multiple">Search for multiple devices</a></p>
+                <p class="govuk-body"><a href="search">Show the complete list of medical devices</a></p>
+        </div>
+        <div class="govuk-grid-column-one-third">
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+            <h2 class="govuk-heading-m">Download the database</h2>
+            <ul class="govuk-list govuk-list--bullet">
+                <li><a href="#">Download as XML</a></li>
+                <li><a href="#">API access</a></li>
+            </ul>
+            </div>
+        </div>
+    </main>
+
+{{> layout/footer}}

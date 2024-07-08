@@ -1,0 +1,22 @@
+{{> layout/header}}
+
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Thank you for your feedback</h1>
+        <p class="govuk-body">
+          We will send this information to the device manufacturer. 
+        </p>
+        <p class="govuk-body">
+          You will get an email letting you know when the manufacturer corrects the data. 
+        </p>
+        <form action="/product/{{ ID }}">
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Back to product
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+{{> layout/footer}}

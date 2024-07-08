@@ -1,0 +1,134 @@
+{{> layout/header}}
+
+{{#back}}
+    <a href="{{back}}" class="govuk-back-link">Back</a>
+{{/back}}
+
+
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Search results</h1>
+
+        {{> partial/searchbox }}
+
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+        {{# rangeText }}
+            <span class="govuk-body"><strong>{{total}} results</strong></span>
+        {{/rangeText}}
+
+        {{^ products }}
+            <span class="govuk-body">
+              <strong>No results were found for '{{term}}'</strong>
+              <br>
+              <br>
+              <p class="govuk-body">Try searching for another:</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>product name</li>
+                <li>manufacturer name</li>
+                <li>GMDN code or term</li>
+                <li>manufacturer product code (MPC)</li>
+              </ul>
+            </span>
+        {{/products}}
+
+      </div>
+    </div>
+
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+        <ul class="govuk-list">
+        {{# products }}
+          <li>
+            {{> partial/searchresult }}
+          </li>
+        {{/products}}
+        </ul>
+
+        {{> partial/pagination }}
+
+      </div>
+
+      <div class="govuk-grid-column-one-third filters">
+        <div class="govuk-form-group">
+          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+          <h3 class="govuk-heading-m">Refine</h3>
+          <label class="govuk-label govuk-label--s" for="sort">
+            Sort results
+          </label>
+          <select class="govuk-select" id="sort" name="sort">
+            <option value="{{ sort.relevant }}" selected>Most relevant</option>
+            <option id="sort_name" value="{{ sort.name_az }}">Product name (A to Z)</option>
+            <option id="sort_manufacturer" value="{{ sort.manufacturer_az }}">Manufacturer name (A to Z)</option>
+          </select>
+        <hr class="govuk-section-break govuk-section-break--m">
+        {{> partial/filters }}
+          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        {{> partial/download}}
+        </div>
+        
+
+
+      </div>
+    </div>
+  </main>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+    /* Make sure correct selection option is set  */
+    const selectDropdown = document.querySelector('select#sort');
+    const urlParams = new URLSearchParams(window.location.search);
+    const sort = urlParams.get('sort');
+    if ( sort ) {
+        var option = document.querySelector('#sort_' + sort);
+        if (option) {
+            option.setAttribute('selected', 'selected');
+        }
+    }
+
+    /* Activate sort when an option is chosen  */
+    selectDropdown.addEventListener('change', function (e) {
+        window.location.href = e.target.value;
+    });
+
+
+    /* Highlight test text */
+    sb = document. getElementById("search");
+    if (sb.value.toLowerCase().includes("catheter")) {
+        const words = sb.value.split(" ").map(function(s) {return s.toLowerCase()});
+
+        const elements = document.querySelectorAll("div.search-result dd");
+        for (i in elements ) {
+            let inner = elements[i].innerHTML;
+            if ( inner == undefined ||   inner.includes("govuk-hint")) {
+                continue;
+            }
+
+            let lower = inner.toLowerCase();
+            for (wi in words) {
+                let word = words[wi];
+
+                if (inner.indexOf(word) >= 0 ) {
+                    inner = inner.replace(word, "<b>" + word + "</b>");
+                }
+            }
+
+            if( inner != elements[i].innerHTML ) {
+                elements[i].innerHTML = inner;
+            }
+        }
+    }
+});
+
+</script>
+
+{{> layout/footer}}

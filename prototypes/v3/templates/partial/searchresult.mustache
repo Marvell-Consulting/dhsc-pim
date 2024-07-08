@@ -1,0 +1,76 @@
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full search-result">
+
+    <h3>{{BRAND_TRADE_NAME}} {{# PRODUCT_CODE }} - {{ . }} {{/ PRODUCT_CODE }}</h3>
+
+    <dl>
+      <dt>
+          Manufacturer:
+      </dt>
+      <dd>
+          {{^ MANUFACTURER_NAME }}  <span class="govuk-hint">Data not available</span> {{/ MANUFACTURER_NAME}}
+          {{# MANUFACTURER_NAME }} {{ . }} {{/MANUFACTURER_NAME}}
+      </dd>
+      <dt>
+          Product description:
+      </dt>
+      <dd>
+          <span class="govuk-hint">Data not available</span>
+      </dd>
+      <dt>
+          GMDN:
+      </dt>
+      <dd>
+          {{^ GMDN_CODE }}  <span class="govuk-hint">Data not available</span> {{/ GMDN_CODE}}
+          {{# GMDN_CODE }} {{ . }} - {{GMDN_TERM_NAME}} {{/GMDN_CODE}}
+
+      </dd>
+      <dt>
+          Product Code (MPC):
+      </dt>
+      <dd>
+          {{^ PRODUCT_CODE }}  <span class="govuk-hint">Data not available</span> {{/ PRODUCT_CODE}}
+          {{# PRODUCT_CODE }} {{ . }} {{/PRODUCT_CODE}}
+      </dd>
+      <dt>
+        UDI-DI:
+      </dt>
+      <dd>
+        {{^ UDI_NUMBER }}  <span class="govuk-hint">Data not available</span> {{/ UDI_NUMBER}}
+        {{# UDI_NUMBER }} {{ . }} {{/UDI_NUMBER}}
+      </dd>
+      <dt>
+        Risk class:
+      </dt>
+      <dd>
+          {{^ DEVICE_RISK_SUB_TYPE_DESC }}  <span class="govuk-hint">Data not available</span> {{/ DEVICE_RISK_SUB_TYPE_DESC}}
+          {{# DEVICE_RISK_SUB_TYPE_DESC }} {{ . }} {{/DEVICE_RISK_SUB_TYPE_DESC}}
+      </dd>
+      <dt>
+        NHS eClass:
+      </dt>
+      <dd>
+          <span class="govuk-hint">Data not available</span>
+      </dd>
+    </dl>
+    <a href="/product/{{PRODUCT_ID}}">Full product information</a>
+    </br>
+    </br>
+  </div>
+</div>
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+<!--
+    <dl>
+      <dt>
+          Name
+      </dt>
+      <dd>
+         {{ name }}
+      </dd>
+    </dl>
+-->
